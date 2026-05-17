@@ -1514,7 +1514,7 @@ section.cs{padding:120px 60px;}
 .clink-arr{color:var(--gray);transition:transform .3s,color .3s;}
 .clink:hover .clink-arr{transform:translate(5px,-5px);color:#fff;}
 
-footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relative;z-index:2;display:flex;flex-direction:column;gap:48px;}
+footer{padding:60px 60px 48px;border-top:none;position:relative;z-index:2;display:flex;flex-direction:column;gap:48px;}
 .footer-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,7rem);color:rgba(255,255,255,0.08);letter-spacing:-.02em;line-height:1;pointer-events:none;user-select:none;text-align:center;width:100%;}
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,0.04);}
 .f-copy{font-size:.7rem;letter-spacing:.1em;color:var(--gray);}
@@ -1525,13 +1525,13 @@ footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relati
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
-  /* NAV */
-  nav{padding:16px 20px !important;background:rgba(5,5,5,0.95) !important;}
-  .nav-center{display:none !important;}
-  .nav-lebenslauf{display:none !important;}
-  .nav-cta{padding:8px 18px;font-size:.65rem;}
+  /* CURSOR - hide on mobile */
+  .cur,.cur-r{display:none !important;}
 
-  /* HERO - full screen photo */
+  /* NAV - hide completely on mobile */
+  nav{display:none !important;}
+
+  /* HERO */
   .hero{
     display:block !important;
     position:relative;
@@ -1547,24 +1547,25 @@ footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relati
   }
   .hero-photo{
     width:100% !important;
-    height:100% !important;
+    height:85% !important;
     object-fit:cover !important;
     object-position:top center !important;
   }
   .hero-photo-overlay{
-    background:linear-gradient(to top,rgba(5,5,5,0.95) 0%,rgba(5,5,5,0.4) 50%,transparent 100%) !important;
+    background:linear-gradient(to top,rgba(5,5,5,1) 0%,rgba(5,5,5,0.5) 55%,transparent 100%) !important;
   }
   .hero-left{
     position:absolute !important;
     inset:0 !important;
     z-index:2 !important;
-    padding:90px 24px 48px !important;
+    padding:40px 24px 48px !important;
     display:flex !important;
     flex-direction:column !important;
     justify-content:flex-end !important;
   }
+  /* Hide background name on mobile */
+  .hero-bg-name{display:none !important;}
   .hero-name{font-size:clamp(2.8rem,13vw,4.5rem) !important;margin-bottom:20px !important;}
-  .hero-bg-name{font-size:clamp(55px,18vw,100px) !important;}
   .hero-firstname{left:24px !important;bottom:28px !important;font-size:1.1rem !important;}
   .hero-tagline{
     position:absolute !important;
@@ -1574,9 +1575,8 @@ footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relati
     max-width:150px !important;
   }
   .hero-tagline p{font-size:.66rem !important;}
-  .hero-badge{top:76px !important;left:20px !important;font-size:.58rem !important;padding:5px 10px !important;}
+  .hero-badge{top:24px !important;left:20px !important;font-size:.58rem !important;padding:5px 10px !important;}
   .hero-btns{flex-direction:column !important;gap:10px !important;align-items:flex-start !important;}
-  .hero-focus-list{margin-top:0 !important;}
   .hfl-item{padding:8px 0 !important;font-size:.66rem !important;}
 
   /* MARQUEE */
@@ -1638,7 +1638,7 @@ footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relati
     margin-top:12px !important;
   }
   .pcard-hint{opacity:1 !important;}
-  .pcard-arrow{width:32px !important;height:32px !important;font-size:.8rem !important;}
+  .pcard-arrow{width:32px !important;height:32px !important;font-size:.8rem !important;cursor:pointer !important;}
 
   /* EXPERIENCE */
   .exp-item{
@@ -1649,11 +1649,22 @@ footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relati
   .exp-role{font-size:1.1rem !important;}
   .exp-list-items li{font-size:.78rem !important;}
 
-  /* CONTACT */
+  /* CONTACT - fix icons and arrows */
   .contact-split{grid-template-columns:1fr !important;gap:32px !important;}
   .contact-big{font-size:clamp(1.8rem,7vw,2.8rem) !important;margin-bottom:16px !important;}
   .clink{padding:20px 0 !important;}
   .clink-val{font-size:1rem !important;}
+  .clink-ico{
+    color:rgba(255,255,255,0.5) !important;
+    font-size:.9rem !important;
+    font-style:normal !important;
+    font-family:'Syne',sans-serif !important;
+  }
+  .clink-arr{
+    color:rgba(255,255,255,0.4) !important;
+    font-size:.9rem !important;
+    font-style:normal !important;
+  }
 
   /* FOOTER */
   footer{padding:40px 20px 28px !important;gap:28px !important;flex-direction:column !important;}
@@ -1661,7 +1672,7 @@ footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relati
   .footer-name{font-size:clamp(2.2rem,10vw,4rem) !important;}
 
   /* PLANET - hide on mobile */
-  .planet-wrap{opacity:0 !important;pointer-events:none !important;}
+  .planet-wrap{display:none !important;}
 
   /* MODALS */
   .cv-modal-nav{padding:12px 16px !important;gap:8px !important;flex-wrap:wrap !important;}
@@ -1672,6 +1683,11 @@ footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relati
 
 @media screen and (max-width:480px){
   .hero-name{font-size:clamp(2.3rem,12vw,3.5rem) !important;}
+  .hero-firstname{font-size:.95rem !important;letter-spacing:.12em !important;}
+  section.cs{padding:44px 16px !important;}
+  .pcard-name{font-size:1rem !important;}
+  .contact-big{font-size:clamp(1.6rem,7vw,2.4rem) !important;}
+}
   .hero-firstname{font-size:.95rem !important;letter-spacing:.12em !important;}
   section.cs{padding:44px 16px !important;}
   nav{padding:12px 16px !important;}
@@ -1801,6 +1817,48 @@ footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relati
 }
 .proto-modal-frame iframe{
   width:100%;height:100%;border:none;display:block;
+}
+
+/* FLOATING CV BUTTON */
+.float-cv{
+  position:fixed;
+  bottom:32px;
+  right:32px;
+  z-index:300;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.95);
+  color:#000;
+  border:none;
+  padding:12px 22px;
+  border-radius:100px;
+  font-family:'Syne',sans-serif;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  cursor:none;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .4s ease, transform .4s ease, background .3s;
+  pointer-events:none;
+}
+.float-cv.visible{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:all;
+}
+.float-cv:hover{background:#fff;}
+.float-cv-icon{font-size:.85rem;}
+
+@media screen and (max-width:900px){
+  .float-cv{
+    bottom:24px;
+    right:20px;
+    padding:10px 18px;
+    font-size:.65rem;
+    cursor:pointer;
+  }
 }
 </style>
 </head>
@@ -2242,6 +2300,13 @@ function closeProto() {
 
 </script>
 
+
+<!-- FLOATING CV BUTTON -->
+<button class="float-cv" id="floatCV" onclick="openCV()">
+  <span class="float-cv-icon">📄</span>
+  Lebenslauf
+</button>
+
 <!-- CV MODAL -->
 <div class="cv-modal" id="cvModal">
   <div class="cv-modal-nav">
@@ -2267,6 +2332,22 @@ function openCV() {
   document.getElementById('cvModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
+
+// FLOATING CV BUTTON - show after scrolling past hero
+const floatCV = document.getElementById('floatCV');
+function updateFloatCV(){
+  const hero = document.getElementById('hero');
+  if(!hero) return;
+  const heroBottom = hero.offsetTop + hero.offsetHeight;
+  if(window.scrollY > heroBottom * 0.5){
+    floatCV.classList.add('visible');
+  } else {
+    floatCV.classList.remove('visible');
+  }
+}
+window.addEventListener('scroll', updateFloatCV, {passive:true});
+updateFloatCV();
+
 function closeCV() {
   document.getElementById('cvModal').classList.remove('open');
   document.body.style.overflow = '';
