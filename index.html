@@ -1702,19 +1702,44 @@ footer{padding:60px 60px 48px;border-top:none;position:relative;z-index:2;displa
   }
 
   /* MODALS */
-  .cv-modal-nav{padding:12px 16px !important;gap:8px !important;flex-wrap:wrap !important;}
+  .cv-modal-nav{
+    padding:12px 16px !important;
+    gap:8px !important;
+    flex-wrap:wrap !important;
+    height:auto !important;
+  }
   .cv-modal-nav-links{display:none !important;}
-  .cv-modal-frame{overflow:auto !important;-webkit-overflow-scrolling:touch !important;}
+  .cv-download{
+    font-size:.62rem !important;
+    padding:7px 14px !important;
+  }
+  .cv-modal-frame{
+    flex:1 !important;
+    overflow:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    display:flex !important;
+    flex-direction:column !important;
+  }
   .cv-modal-frame iframe{
+    flex:1 !important;
     width:100% !important;
-    height:calc(100vh - 52px) !important;
-    min-height:400px !important;
+    height:100% !important;
+    min-height:calc(100svh - 60px) !important;
     border:none !important;
     display:block !important;
-    transform-origin:top left;
   }
   .proto-modal-nav{padding:10px 16px !important;gap:8px !important;flex-wrap:wrap !important;}
   .proto-modal-links a:not(.proto-newtab){display:none !important;}
+  
+  /* Float CV button on mobile */
+  .float-cv{
+    bottom:20px !important;
+    right:16px !important;
+    padding:10px 18px !important;
+    font-size:.65rem !important;
+    cursor:pointer !important;
+    box-shadow:0 4px 20px rgba(0,0,0,0.5) !important;
+  }
 }
 
 @media screen and (max-width:480px){
@@ -2359,7 +2384,21 @@ function closeProto() {
     </div>
   </div>
   <div class="cv-modal-frame">
-    <iframe src="lebenslauf.pdf" type="application/pdf"></iframe>
+    <iframe 
+  id="cvIframe"
+  src="lebenslauf.pdf" 
+  type="application/pdf"
+  style="width:100%;height:100%;border:none;display:block;"
+  allow="fullscreen">
+</iframe>
+<div id="cvMobileFallback" style="display:none;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#1a1a1a;padding:20px;text-align:center;">
+  <p style="color:rgba(255,255,255,0.5);font-size:.8rem;margin-bottom:20px;font-family:'Syne',sans-serif;letter-spacing:.1em;text-transform:uppercase;">PDF Vorschau nicht verfügbar</p>
+  <a id="cvMobileLink" href="lebenslauf.pdf" target="_blank" 
+     style="display:inline-block;background:#fff;color:#000;padding:14px 28px;border-radius:100px;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;">
+    ↗ Lebenslauf öffnen
+  </a>
+  <p style="color:rgba(255,255,255,0.3);font-size:.68rem;margin-top:16px;font-family:'Syne',sans-serif;">Öffnet in einem neuen Tab</p>
+</div>
   </div>
 </div>
 <script>
@@ -2367,6 +2406,20 @@ function closeProto() {
 function openCV() {
   document.getElementById('cvModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  // On mobile Safari, PDF iframe doesn't work - show fallback
+  const isMobile = window.innerWidth <= 900;
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  if(isMobile || isIOS){
+    document.getElementById('cvIframe').style.display = 'none';
+    document.getElementById('cvMobileFallback').style.display = 'flex';
+    document.getElementById('cvMobileFallback').style.flexDirection = 'column';
+    document.getElementById('cvMobileFallback').style.alignItems = 'center';
+    document.getElementById('cvMobileFallback').style.justifyContent = 'center';
+    document.getElementById('cvMobileFallback').style.flex = '1';
+  } else {
+    document.getElementById('cvIframe').style.display = 'block';
+    document.getElementById('cvMobileFallback').style.display = 'none';
+  }
 }
 
 // FLOATING CV BUTTON - show after scrolling past hero
