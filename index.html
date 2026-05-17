@@ -1554,10 +1554,11 @@ footer{padding:60px 60px 48px;border-top:none;position:relative;z-index:2;displa
     top:0 !important;left:0 !important;
     width:100% !important;
     height:100% !important;
-    object-fit:cover !important;
-    object-position:50% 0% !important;
+    object-fit:contain !important;
+    object-position:center 10% !important;
     display:block !important;
     transform:none !important;
+    background:#050505 !important;
   }
   .hero-photo-overlay{
     position:absolute !important;
@@ -1576,8 +1577,15 @@ footer{padding:60px 60px 48px;border-top:none;position:relative;z-index:2;displa
   .hero-bg-name{display:none !important;}
   .hero-name{font-size:clamp(2.5rem,11vw,4rem) !important;margin-bottom:16px !important;}
   .hero-firstname{left:24px !important;bottom:24px !important;font-size:1rem !important;}
-  .hero-tagline{position:absolute !important;top:auto !important;bottom:24px !important;right:20px !important;max-width:140px !important;}
-  .hero-tagline p{font-size:.64rem !important;}
+  .hero-tagline{
+    position:absolute !important;
+    top:20px !important;
+    right:20px !important;
+    bottom:auto !important;
+    max-width:130px !important;
+    text-align:right !important;
+  }
+  .hero-tagline p{font-size:.62rem !important;line-height:1.9 !important;}
   .hero-badge{top:20px !important;left:20px !important;font-size:.56rem !important;padding:5px 10px !important;}
   .hero-btns{flex-direction:column !important;gap:10px !important;align-items:flex-start !important;}
   .hfl-item{padding:7px 0 !important;font-size:.64rem !important;}
@@ -2368,22 +2376,18 @@ function closeProto() {
 <script>
 // CV MODAL
 function openCV() {
-  document.getElementById('cvModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  // On mobile Safari, PDF iframe doesn't work - show fallback
   const isMobile = window.innerWidth <= 900;
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  // On mobile - open PDF directly in new tab
   if(isMobile || isIOS){
-    document.getElementById('cvIframe').style.display = 'none';
-    document.getElementById('cvMobileFallback').style.display = 'flex';
-    document.getElementById('cvMobileFallback').style.flexDirection = 'column';
-    document.getElementById('cvMobileFallback').style.alignItems = 'center';
-    document.getElementById('cvMobileFallback').style.justifyContent = 'center';
-    document.getElementById('cvMobileFallback').style.flex = '1';
-  } else {
-    document.getElementById('cvIframe').style.display = 'block';
-    document.getElementById('cvMobileFallback').style.display = 'none';
+    window.open('lebenslauf.pdf', '_blank');
+    return;
   }
+  // On desktop - show modal
+  document.getElementById('cvModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('cvIframe').style.display = 'block';
+  document.getElementById('cvMobileFallback').style.display = 'none';
 }
 
 // FLOATING CV BUTTON - show after scrolling past hero
