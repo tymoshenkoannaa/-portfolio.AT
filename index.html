@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 <title>Anna Tymoshenko — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
@@ -474,7 +474,7 @@ section.cs{padding:120px 60px;}
 .proj-card-row:hover .proj-card-row-hint{opacity:1;}
 
 /* Coming soon */
-.proj-card-soon{
+.proj-card-soon{border-radius:16px !important;
   flex-direction:row;
   cursor:default;
   border:1px dashed rgba(255,255,255,0.06) !important;
@@ -513,19 +513,27 @@ section.cs{padding:120px 60px;}
   text-decoration:none;color:#fff;
   background:rgba(10,10,10,0.9);
   border:1px solid rgba(255,255,255,0.07);
+  border-radius:16px;
   overflow:hidden;
-  transition:border-color .35s ease, transform .35s ease;
+  transition:
+    border-color .7s cubic-bezier(0.16,1,0.3,1),
+    transform .7s cubic-bezier(0.16,1,0.3,1),
+    background .7s ease,
+    box-shadow .7s ease;
   cursor:pointer;
   min-height:100px;
+  will-change:transform;
 }
 .pcard:hover{
-  border-color:rgba(255,255,255,0.18);
-  transform:translateX(6px);
+  border-color:rgba(255,255,255,0.15);
+  transform:translateX(12px);
+  background:rgba(16,16,16,0.95);
+  box-shadow:-10px 0 50px rgba(0,0,0,0.5);
 }
 
 .pcard-body{
   flex:1;min-width:0;
-  padding:28px 36px;
+  padding:32px 36px 28px;
   display:flex;flex-direction:column;
   justify-content:space-between;
 }
@@ -533,7 +541,7 @@ section.cs{padding:120px 60px;}
 
 .pcard-header{
   display:flex;align-items:baseline;gap:14px;
-  margin-bottom:6px;
+  margin-bottom:10px;
 }
 .pcard-num{
   font-size:.58rem;letter-spacing:.2em;
@@ -542,6 +550,7 @@ section.cs{padding:120px 60px;}
 .pcard-name{
   font-family:'Playfair Display',serif;
   font-size:1.35rem;line-height:1.1;
+  padding-bottom:4px;
 }
 .pcard-sub{
   font-size:.63rem;letter-spacing:.08em;
@@ -555,20 +564,26 @@ section.cs{padding:120px 60px;}
   color:rgba(255,255,255,0.35);
   padding-left:32px;
   max-height:0;overflow:hidden;opacity:0;
-  transition:max-height .45s ease, opacity .35s ease, margin .35s;
+  transition:
+    max-height .9s cubic-bezier(0.16,1,0.3,1),
+    opacity .6s ease .15s,
+    margin .6s ease;
   margin-top:0;
 }
 .pcard:hover .pcard-desc{
-  max-height:120px;opacity:1;margin-top:12px;
+  max-height:150px;opacity:1;margin-top:14px;
 }
 .pcard-tasks{
   padding-left:32px;
   max-height:0;overflow:hidden;opacity:0;
-  transition:max-height .45s ease .05s, opacity .35s ease .05s, margin .35s;
+  transition:
+    max-height .9s cubic-bezier(0.16,1,0.3,1) .05s,
+    opacity .6s ease .25s,
+    margin .6s ease;
   margin-top:0;
 }
 .pcard:hover .pcard-tasks{
-  max-height:200px;opacity:1;margin-top:8px;
+  max-height:300px;opacity:1;margin-top:10px;
 }
 .pcard-task{
   font-size:.7rem;line-height:1.7;
@@ -622,7 +637,7 @@ section.cs{padding:120px 60px;}
   width:100%;height:100%;
   object-fit:cover;display:block;
   filter:brightness(.4) saturate(.6);
-  transition:filter .5s, transform .5s;
+  transition:filter 1s ease, transform 1s cubic-bezier(0.16,1,0.3,1);
 }
 .pcard:not(.pcard-nozoom):hover .pcard-img img{
   filter:brightness(.7) saturate(.9);
@@ -795,7 +810,7 @@ section.cs{padding:120px 60px;}
 .proj-card-row:hover .proj-card-row-hint{opacity:1;}
 
 /* Coming soon */
-.proj-card-soon{
+.proj-card-soon{border-radius:16px !important;
   flex-direction:row;
   cursor:default;
   border:1px dashed rgba(255,255,255,0.06) !important;
@@ -953,7 +968,7 @@ section.cs{padding:120px 60px;}
 .proj-card-row:hover .proj-card-row-hint{opacity:1;}
 
 /* Coming soon */
-.proj-card-soon{
+.proj-card-soon{border-radius:16px !important;
   grid-template-columns:1fr;
   cursor:default;
   min-height:80px;
@@ -1509,18 +1524,167 @@ footer{padding:60px 60px 48px;border-top:1px solid var(--border);position:relati
 .fade{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
 .fade.in{opacity:1;transform:translateY(0);}
 
-@media(max-width:900px){
-  nav{padding:16px 24px;}
-  .nav-center{display:none;}
-  section.cs{padding:80px 24px;}
-  .about-grid,.skills-grid{grid-template-columns:1fr;}
-  .proj-row{grid-template-columns:1fr;gap:16px;}.proj-n{display:none;}
-  .exp-item{grid-template-columns:1fr;gap:12px;}
-  footer{padding:32px 24px;flex-direction:column;gap:16px;}
-  .planet-wrap{width:260px;height:260px;right:-50px;}
-  .hero-firstname{left:24px;bottom:40px;}
-  .hero-tagline{right:24px;bottom:40px;max-width:200px;}
-  .hero-bg-name{font-size:80px;}
+@media screen and (max-width:900px){
+  /* NAV */
+  nav{padding:16px 20px !important;background:rgba(5,5,5,0.95) !important;}
+  .nav-center{display:none !important;}
+  .nav-lebenslauf{display:none !important;}
+  .nav-cta{padding:8px 18px;font-size:.65rem;}
+
+  /* HERO - full screen photo */
+  .hero{
+    display:block !important;
+    position:relative;
+    min-height:100svh;
+    overflow:hidden;
+  }
+  .hero-right{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    z-index:0 !important;
+  }
+  .hero-photo{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:top center !important;
+  }
+  .hero-photo-overlay{
+    background:linear-gradient(to top,rgba(5,5,5,0.95) 0%,rgba(5,5,5,0.4) 50%,transparent 100%) !important;
+  }
+  .hero-left{
+    position:absolute !important;
+    inset:0 !important;
+    z-index:2 !important;
+    padding:90px 24px 48px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-end !important;
+  }
+  .hero-name{font-size:clamp(2.8rem,13vw,4.5rem) !important;margin-bottom:20px !important;}
+  .hero-bg-name{font-size:clamp(55px,18vw,100px) !important;}
+  .hero-firstname{left:24px !important;bottom:28px !important;font-size:1.1rem !important;}
+  .hero-tagline{
+    position:absolute !important;
+    top:auto !important;
+    bottom:28px !important;
+    right:24px !important;
+    max-width:150px !important;
+  }
+  .hero-tagline p{font-size:.66rem !important;}
+  .hero-badge{top:76px !important;left:20px !important;font-size:.58rem !important;padding:5px 10px !important;}
+  .hero-btns{flex-direction:column !important;gap:10px !important;align-items:flex-start !important;}
+  .hero-focus-list{margin-top:0 !important;}
+  .hfl-item{padding:8px 0 !important;font-size:.66rem !important;}
+
+  /* MARQUEE */
+  .marquee-wrap{margin-top:0 !important;}
+
+  /* SECTIONS */
+  section.cs{padding:60px 20px !important;}
+  .sec-title{font-size:clamp(1.8rem,7vw,2.8rem) !important;}
+
+  /* ABOUT */
+  .about-grid{grid-template-columns:1fr !important;gap:36px !important;}
+  .approach-box{padding:24px 20px !important;}
+  .val-item{padding:16px 0 !important;}
+  .val-desc{max-width:140px !important;font-size:.68rem !important;}
+
+  /* SKILLS */
+  .skills-grid{
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+    background:transparent !important;
+  }
+  .skill-block{padding:28px 20px !important;border-radius:12px !important;}
+  .skill-h{font-size:1.1rem !important;margin-bottom:16px !important;}
+
+  /* PROJECTS */
+  .proj-cards{gap:8px !important;}
+  .pcard{
+    flex-direction:column !important;
+    border-radius:12px !important;
+    transform:none !important;
+  }
+  .pcard:hover{transform:none !important;box-shadow:none !important;}
+  .pcard-img{
+    width:100% !important;
+    min-width:unset !important;
+    height:180px !important;
+    order:-1 !important;
+  }
+  .pcard-body{padding:18px 18px 14px !important;}
+  .pcard-name{font-size:1.1rem !important;}
+  .pcard-sub{font-size:.6rem !important;margin-bottom:10px !important;}
+  .pcard-desc{
+    padding-left:0 !important;
+    max-height:200px !important;
+    opacity:1 !important;
+    margin-top:10px !important;
+    font-size:.72rem !important;
+  }
+  .pcard-tasks{
+    padding-left:0 !important;
+    max-height:400px !important;
+    opacity:1 !important;
+    margin-top:6px !important;
+  }
+  .pcard-task{font-size:.67rem !important;}
+  .pcard-footer{
+    max-height:60px !important;
+    opacity:1 !important;
+    margin-top:12px !important;
+  }
+  .pcard-hint{opacity:1 !important;}
+  .pcard-arrow{width:32px !important;height:32px !important;font-size:.8rem !important;}
+
+  /* EXPERIENCE */
+  .exp-item{
+    grid-template-columns:1fr !important;
+    gap:6px !important;
+    padding:32px 0 !important;
+  }
+  .exp-role{font-size:1.1rem !important;}
+  .exp-list-items li{font-size:.78rem !important;}
+
+  /* CONTACT */
+  .contact-split{grid-template-columns:1fr !important;gap:32px !important;}
+  .contact-big{font-size:clamp(1.8rem,7vw,2.8rem) !important;margin-bottom:16px !important;}
+  .clink{padding:20px 0 !important;}
+  .clink-val{font-size:1rem !important;}
+
+  /* FOOTER */
+  footer{padding:40px 20px 28px !important;gap:28px !important;flex-direction:column !important;}
+  .footer-bottom{flex-direction:column !important;gap:10px !important;text-align:center !important;}
+  .footer-name{font-size:clamp(2.2rem,10vw,4rem) !important;}
+
+  /* PLANET - hide on mobile */
+  .planet-wrap{opacity:0 !important;pointer-events:none !important;}
+
+  /* MODALS */
+  .cv-modal-nav{padding:12px 16px !important;gap:8px !important;flex-wrap:wrap !important;}
+  .cv-modal-nav-links{display:none !important;}
+  .proto-modal-nav{padding:10px 16px !important;gap:8px !important;flex-wrap:wrap !important;}
+  .proto-modal-links a:not(.proto-newtab){display:none !important;}
+}
+
+@media screen and (max-width:480px){
+  .hero-name{font-size:clamp(2.3rem,12vw,3.5rem) !important;}
+  .hero-firstname{font-size:.95rem !important;letter-spacing:.12em !important;}
+  section.cs{padding:44px 16px !important;}
+  nav{padding:12px 16px !important;}
+  .nav-cta{padding:7px 14px !important;font-size:.62rem !important;}
+  .pcard-name{font-size:1rem !important;}
+  .contact-big{font-size:clamp(1.6rem,7vw,2.4rem) !important;}
+}
+  .hero-firstname{font-size:1rem;}
+  .hero-tagline{max-width:130px;}
+  .hfl-item{font-size:.65rem;padding:8px 0;}
+  section.cs{padding:48px 16px;}
+  .pcard-body{padding:16px;}
+  nav{padding:14px 16px;}
 }
 
 /* eBEHÖRDE CARD ANIMATION */
