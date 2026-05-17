@@ -514,20 +514,13 @@ section.cs{padding:120px 60px;}
   background:rgba(10,10,10,0.9);
   border:1px solid rgba(255,255,255,0.07);
   overflow:hidden;
-  transition:
-    border-color .6s cubic-bezier(0.22,1,0.36,1),
-    transform .6s cubic-bezier(0.22,1,0.36,1),
-    background .6s ease,
-    box-shadow .6s ease;
+  transition:border-color .35s ease, transform .35s ease;
   cursor:pointer;
   min-height:100px;
-  will-change:transform;
 }
 .pcard:hover{
-  border-color:rgba(255,255,255,0.15);
-  transform:translateX(10px);
-  background:rgba(16,16,16,0.95);
-  box-shadow:-8px 0 40px rgba(0,0,0,0.4);
+  border-color:rgba(255,255,255,0.18);
+  transform:translateX(6px);
 }
 
 .pcard-body{
@@ -562,26 +555,20 @@ section.cs{padding:120px 60px;}
   color:rgba(255,255,255,0.35);
   padding-left:32px;
   max-height:0;overflow:hidden;opacity:0;
-  transition:
-    max-height .7s cubic-bezier(0.22,1,0.36,1),
-    opacity .5s ease .1s,
-    margin .5s ease;
+  transition:max-height .45s ease, opacity .35s ease, margin .35s;
   margin-top:0;
 }
 .pcard:hover .pcard-desc{
-  max-height:150px;opacity:1;margin-top:14px;
+  max-height:120px;opacity:1;margin-top:12px;
 }
 .pcard-tasks{
   padding-left:32px;
   max-height:0;overflow:hidden;opacity:0;
-  transition:
-    max-height .7s cubic-bezier(0.22,1,0.36,1) .05s,
-    opacity .5s ease .2s,
-    margin .5s ease;
+  transition:max-height .45s ease .05s, opacity .35s ease .05s, margin .35s;
   margin-top:0;
 }
 .pcard:hover .pcard-tasks{
-  max-height:300px;opacity:1;margin-top:10px;
+  max-height:200px;opacity:1;margin-top:8px;
 }
 .pcard-task{
   font-size:.7rem;line-height:1.7;
@@ -635,12 +622,11 @@ section.cs{padding:120px 60px;}
   width:100%;height:100%;
   object-fit:cover;display:block;
   filter:brightness(.4) saturate(.6);
-  transition:filter .8s ease, transform .8s cubic-bezier(0.22,1,0.36,1);
+  transition:filter .5s, transform .5s;
 }
 .pcard:not(.pcard-nozoom):hover .pcard-img img{
   filter:brightness(.7) saturate(.9);
   transform:scale(1.06);
-  transition:filter .8s ease, transform .8s cubic-bezier(0.22,1,0.36,1);
 }
 .pcard-nozoom:hover .pcard-img img{
   filter:brightness(.55) saturate(.7);
