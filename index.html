@@ -1645,18 +1645,7 @@ footer{padding:60px 60px 48px;border-top:none;position:relative;z-index:2;displa
     margin-top:12px !important;
   }
   .pcard-hint{opacity:1 !important;}
-  .pcard-arrow{
-    width:auto !important;
-    height:auto !important;
-    border:none !important;
-    background:transparent !important;
-    backdrop-filter:none !important;
-    font-size:.85rem !important;
-    cursor:pointer !important;
-    padding:0 !important;
-    color:rgba(255,255,255,0.5) !important;
-    margin-right:4px !important;
-  }
+  .pcard-arrow{display:none !important;}
 
   /* EXPERIENCE */
   .exp-item{
@@ -1689,20 +1678,26 @@ footer{padding:60px 60px 48px;border-top:none;position:relative;z-index:2;displa
   .footer-bottom{flex-direction:column !important;gap:10px !important;text-align:center !important;}
   .footer-name{font-size:clamp(2.2rem,10vw,4rem) !important;}
 
-  /* PLANET - show on mobile, smaller and centered */
+  /* PLANET - show on mobile fullscreen */
   .planet-wrap{
     display:block !important;
     position:fixed !important;
     inset:0 !important;
-    opacity:0;
-    transition:opacity 1.5s ease;
+    width:100% !important;
+    height:100% !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    opacity:0 !important;
+    transition:opacity 1.5s ease !important;
   }
   .planet-wrap.visible{opacity:1 !important;}
   .planet-video{
     width:100% !important;
     height:100% !important;
     object-fit:cover !important;
+    border-radius:0 !important;
     filter:brightness(0.2) saturate(0.8) contrast(1.05) !important;
+    transform-origin:center center !important;
   }
 
   /* MODALS */
