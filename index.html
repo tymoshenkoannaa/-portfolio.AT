@@ -1620,6 +1620,70 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* 1. Anna Tymoshenko LEFT in header */
+  .nav-mobile-name{
+    display:block !important;
+    font-family:'Playfair Display',serif !important;
+    font-size:.65rem !important;
+    letter-spacing:.14em !important;
+    text-transform:uppercase !important;
+    color:rgba(255,255,255,0.6) !important;
+    white-space:nowrap !important;
+  }
+
+  /* Lebenslauf button - styled as download */
+  .nav-lebenslauf{
+    display:flex !important;
+    align-items:center !important;
+    gap:5px !important;
+    background:rgba(255,255,255,0.08) !important;
+    border:1px solid rgba(255,255,255,0.2) !important;
+    color:rgba(255,255,255,0.8) !important;
+    padding:6px 14px !important;
+    border-radius:100px !important;
+    font-size:.56rem !important;
+    letter-spacing:.1em !important;
+    text-transform:uppercase !important;
+    cursor:pointer !important;
+    font-family:'Syne',sans-serif !important;
+    white-space:nowrap !important;
+  }
+  .nav-lebenslauf::before{
+    content:'↓' !important;
+    font-size:.7rem !important;
+    margin-right:3px !important;
+  }
+
+  /* 2. Mein Ansatz - rounded */
+  .approach-box{
+    border-radius:16px !important;
+    overflow:hidden !important;
+  }
+
+  /* 3. Demnächst card - centered + animation */
+  .pcard-soon{
+    min-height:120px !important;
+  }
+  .pcard-soon .pcard-body{
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    padding:32px 20px !important;
+    gap:10px !important;
+  }
+  .pcard-soon .pcard-soon-dot{
+    animation:glowPulse 2s ease-in-out infinite !important;
+    width:8px !important;height:8px !important;
+    border-radius:50% !important;
+    background:rgba(255,255,255,0.2) !important;
+    margin:0 auto 8px !important;
+  }
+  @keyframes glowPulse{
+    0%,100%{opacity:.2;transform:scale(1);}
+    50%{opacity:1;transform:scale(1.4);}
+  }
+
 
   /* Burger RIGHT, Lebenslauf between name and burger */
   .nav-right{
