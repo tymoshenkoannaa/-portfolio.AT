@@ -1620,6 +1620,166 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* 1. Float CV button - above footer, not stuck to bottom */
+  .float-cv{
+    display:flex !important;
+    position:fixed !important;
+    bottom:32px !important;
+    right:20px !important;
+    z-index:400 !important;
+    padding:11px 20px !important;
+    font-size:.62rem !important;
+    cursor:pointer !important;
+    border-radius:100px !important;
+  }
+
+  /* 2. Badge - stays on hero only (fixed, fades on scroll via JS) */
+  .hero-badge{
+    position:fixed !important;
+    top:20px !important;
+    right:20px !important;
+    left:auto !important;
+    z-index:600 !important;
+    font-size:.54rem !important;
+    padding:5px 10px !important;
+    animation:none !important;
+  }
+
+  /* 3. Project arrows - simple text ↗ no circle */
+  .pcard-arrow{
+    all:unset !important;
+    font-size:1.1rem !important;
+    color:rgba(255,255,255,0.5) !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    margin-left:auto !important;
+    flex-shrink:0 !important;
+  }
+
+  /* 1. Float CV button - above footer, not stuck to bottom */
+  .float-cv{
+    display:flex !important;
+    position:fixed !important;
+    bottom:32px !important;
+    right:20px !important;
+    z-index:300 !important;
+    padding:10px 20px !important;
+    font-size:.62rem !important;
+    cursor:pointer !important;
+    box-shadow:0 4px 24px rgba(0,0,0,0.4) !important;
+  }
+
+  /* 2. Badge - hide when scrolled past hero (via JS already) */
+  /* Make sure it starts visible */
+  .hero-badge{
+    transition:opacity 0.4s ease !important;
+  }
+
+  /* 3. Project arrows - simple text ↗ no circle */
+  .pcard-arrow{
+    all:unset !important;
+    font-size:1rem !important;
+    color:rgba(255,255,255,0.5) !important;
+    cursor:pointer !important;
+    flex-shrink:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+    background:none !important;
+    border:none !important;
+    display:inline !important;
+  }
+  .pcard-arrow::after{content:"↗" !important;}
+
+  /* Badge - RIGHT corner */
+  .hero-badge{
+    position:fixed !important;
+    top:20px !important;
+    right:20px !important;
+    left:auto !important;
+    z-index:600 !important;
+    font-size:.54rem !important;
+    padding:5px 10px !important;
+    animation:none !important;
+    opacity:1 !important;
+  }
+
+  /* Tagline - RIGHT, tight spacing, below badge */
+  .hero-tagline{
+    position:fixed !important;
+    top:58px !important;
+    right:20px !important;
+    left:auto !important;
+    bottom:auto !important;
+    text-align:right !important;
+    z-index:600 !important;
+  }
+  .tagline-list{display:flex !important;flex-direction:column !important;gap:0 !important;}
+  .tagline-item{
+    font-size:.68rem !important;
+    line-height:1.4 !important;
+    color:rgba(255,255,255,0.65) !important;
+    letter-spacing:.05em !important;
+    margin:0 !important;
+    padding:1px 0 !important;
+    opacity:0 !important;
+    transform:translateY(10px) !important;
+    animation:taglineUp .5s ease forwards !important;
+  }
+  .tagline-item:nth-child(1){animation-delay:.3s !important;}
+  .tagline-item:nth-child(2){animation-delay:.5s !important;}
+  .tagline-item:nth-child(3){animation-delay:.7s !important;}
+
+  /* Anna Tymoshenko - BOTTOM of slide */
+  .hero-left{
+    position:absolute !important;
+    inset:0 !important;
+    z-index:2 !important;
+    padding:0 20px 28px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-end !important;
+  }
+  .hero-firstname{
+    font-size:clamp(1.5rem,5.5vw,2rem) !important;
+    color:rgba(255,255,255,0.8) !important;
+    letter-spacing:.08em !important;
+    line-height:1.1 !important;
+    position:relative !important;
+    bottom:auto !important;
+    left:auto !important;
+    margin:0 !important;
+    animation:heroFadeUp .8s ease .4s both !important;
+  }
+  .hero-name,.hero-tag,.hero-sub,.hero-btns{display:none !important;}
+
+  /* SMOOTH GRADIENT TRANSITION */
+  .hero-photo-overlay{
+    position:absolute !important;
+    inset:0 !important;
+    background:linear-gradient(
+      to top,
+      #050505 0%,
+      rgba(5,5,5,0.95) 12%,
+      rgba(5,5,5,0.6) 30%,
+      rgba(5,5,5,0) 55%,
+      transparent 100%
+    ) !important;
+    z-index:1 !important;
+  }
+
+  /* Marquee overlaps hero photo */
+  .marquee-wrap{
+    margin-top:-80px !important;
+    padding-top:80px !important;
+    position:relative !important;
+    z-index:10 !important;
+    background:linear-gradient(to bottom, transparent 0%, #050505 80px) !important;
+    padding-bottom:20px !important;
+    padding-left:20px !important;
+    padding-right:20px !important;
+  }
+
   /* 1. Anna Tymoshenko - bottom left with proper margin */
   .hero-firstname{
     position:absolute !important;
@@ -3066,7 +3226,7 @@ function updateHeroElements(){
   const heroBottom = hero.offsetTop + hero.offsetHeight;
   const badge = document.querySelector('.hero-badge');
   const tagline = document.querySelector('.hero-tagline');
-  const scrolled = window.scrollY > heroBottom - 100;
+  const scrolled = window.scrollY > heroBottom - 50;
   if(badge){
     badge.style.opacity = scrolled ? '0' : '';
     badge.style.pointerEvents = scrolled ? 'none' : '';
