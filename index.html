@@ -1620,6 +1620,72 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+
+  /* ── MOBILE HEADER ── */
+  nav#mainNav{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    background:rgba(5,5,5,0.65) !important;
+    backdrop-filter:blur(20px) !important;
+    -webkit-backdrop-filter:blur(20px) !important;
+    border-bottom:1px solid rgba(255,255,255,0.07) !important;
+    padding:14px 20px !important;
+    position:fixed !important;
+    top:0 !important;left:0 !important;right:0 !important;
+    z-index:500 !important;
+  }
+  /* Hide desktop links */
+  .nav-center{display:none !important;}
+  .nav-cta{display:none !important;}
+  nav > div:first-child{display:none !important;}
+
+  /* Show Anna Tymoshenko left */
+  .nav-mobile-name{
+    display:block !important;
+    font-family:'Playfair Display',serif !important;
+    font-size:.68rem !important;
+    letter-spacing:.12em !important;
+    text-transform:uppercase !important;
+    color:rgba(255,255,255,0.65) !important;
+  }
+
+  /* Lebenslauf button */
+  .nav-lebenslauf{
+    display:flex !important;
+    align-items:center !important;
+    gap:4px !important;
+    background:transparent !important;
+    border:1px solid rgba(255,255,255,0.22) !important;
+    color:rgba(255,255,255,0.75) !important;
+    padding:6px 12px !important;
+    border-radius:100px !important;
+    font-size:.58rem !important;
+    letter-spacing:.08em !important;
+    text-transform:uppercase !important;
+    cursor:pointer !important;
+    font-family:'Syne',sans-serif !important;
+  }
+  .nav-lebenslauf::before{content:'↓  ' !important;}
+
+  /* Burger button */
+  .mobile-menu-btn{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:5px !important;
+    width:36px !important;height:36px !important;
+    background:none !important;border:none !important;
+    cursor:pointer !important;padding:4px !important;
+  }
+  .mobile-menu-btn span{
+    display:block !important;
+    width:20px !important;height:1.5px !important;
+    background:rgba(255,255,255,0.85) !important;
+  }
+
+
   /* CURSOR */
   .cur,.cur-r{display:none !important;}
 
