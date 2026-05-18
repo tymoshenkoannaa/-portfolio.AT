@@ -1620,6 +1620,34 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* Show Lebenslauf button between contact and footer */
+  .mobile-cv-btn-wrap{
+    display:flex !important;
+    justify-content:center !important;
+    padding:40px 20px !important;
+    position:relative !important;
+    z-index:10 !important;
+    background:#050505 !important;
+  }
+
+  /* 1. Hide badge completely */
+  .hero-badge{display:none !important;}
+  .hero-tagline{display:none !important;}
+
+  /* 2. Prevent any screen movement */
+  html, body{
+    overflow-x:hidden !important;
+    max-width:100vw !important;
+    position:relative !important;
+  }
+  *{max-width:100% !important;box-sizing:border-box !important;}
+  .hero, .hero-right, .planet-wrap{overflow:hidden !important;}
+
+  /* 3. Float button - not fixed, stays between contact and footer */
+  .float-cv{
+    display:none !important;
+  }
+
   /* 1. Badge - small, lower in hero */
   .hero-badge{
     position:fixed !important;
