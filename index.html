@@ -23,7 +23,7 @@ nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:rgba(5,5,5,0.7);
+  background:rgba(5,5,5,0.45);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.06);
@@ -1831,6 +1831,20 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   pointer-events:none;
 }
 @media screen and (max-width:900px){
+  /* Nav - transparent with logo left */
+  nav#mainNav{
+    display:flex !important;
+    background:rgba(5,5,5,0.45) !important;
+    backdrop-filter:blur(16px) !important;
+    -webkit-backdrop-filter:blur(16px) !important;
+    border-bottom:1px solid rgba(255,255,255,0.05) !important;
+    padding:14px 20px !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+  }
+  .nav-logo-name{display:block !important;font-size:.78rem !important;letter-spacing:.1em !important;color:rgba(255,255,255,0.7) !important;}
+  .nav-center,.nav-lebenslauf,.nav-cta{display:none !important;}
+
   .float-cv.visible{opacity:1 !important;pointer-events:all !important;}
 }
 .float-cv:hover{background:#fff;}
@@ -2176,7 +2190,7 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 </div>
 
 <nav id="mainNav">
-  <div></div>
+  <a href="#" class="nav-logo-name" style="font-family:'Playfair Display',serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;">Anna Tymoshenko</a>
   <ul class="nav-center">
     <li><a href="#about">Über mich</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -2480,7 +2494,7 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="cs">
+<section id="contact" class="cs" style="padding-bottom:120px;">
   <div class="sec-num">№ 05</div>
   <div class="sec-head fade"><h2 class="sec-title">Kontakt</h2><div class="line"></div></div>
   <div class="contact-split fade">
@@ -2489,10 +2503,10 @@ footer{padding-left:80px !important;padding-right:80px !important;}
       <p class="contact-sub">Ich freue mich auf deine Nachricht.</p>
     </div>
     <div class="contact-right">
-      <a href="mailto:tymoshenko.annaa@gmail.com" class="clink"><div class="clink-left"><span class="clink-ico">✦</span><div><div class="clink-lbl">E-Mail</div><div class="clink-val">tymoshenko.annaa@gmail.com</div></div></div><span class="clink-arr" style="font-family:monospace;font-style:normal;color:rgba(255,255,255,0.4);">↗</span></a>
-      <a href="tel:+491754160787" class="clink"><div class="clink-left"><span class="clink-ico">✦</span><div><div class="clink-lbl">Telefon</div><div class="clink-val">+49 175 4160787</div></div></div><span class="clink-arr" style="font-family:monospace;font-style:normal;color:rgba(255,255,255,0.4);">↗</span></a>
-      <a href="https://www.linkedin.com/in/anna-tymoshenko-84183036b/" target="_blank" class="clink"><div class="clink-left"><span class="clink-ico">✦</span><div><div class="clink-lbl">LinkedIn</div><div class="clink-val">Anna Tymoshenko</div></div></div><span class="clink-arr" style="font-family:monospace;font-style:normal;color:rgba(255,255,255,0.4);">↗</span></a>
-      <a href="https://www.behance.net/AnnaTymoshenkoo" target="_blank" class="clink" style="border-bottom:none;"><div class="clink-left"><span class="clink-ico">✦</span><div><div class="clink-lbl">Behance</div><div class="clink-val">AnnaTymoshenkoo</div></div></div><span class="clink-arr" style="font-family:monospace;font-style:normal;color:rgba(255,255,255,0.4);">↗</span></a>
+      <a href="mailto:tymoshenko.annaa@gmail.com" class="clink"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">E-Mail</div><div class="clink-val">tymoshenko.annaa@gmail.com</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;">↗</span></a>
+      <a href="tel:+491754160787" class="clink"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">Telefon</div><div class="clink-val">+49 175 4160787</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;">↗</span></a>
+      <a href="https://www.linkedin.com/in/anna-tymoshenko-84183036b/" target="_blank" class="clink"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">LinkedIn</div><div class="clink-val">Anna Tymoshenko</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;">↗</span></a>
+      <a href="https://www.behance.net/AnnaTymoshenkoo" target="_blank" class="clink" style="border-bottom:none;"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">Behance</div><div class="clink-val">AnnaTymoshenkoo</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;">↗</span></a>
     </div>
   </div>
 </section>
