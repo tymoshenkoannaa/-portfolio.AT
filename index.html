@@ -46,14 +46,17 @@ body{background:var(--black);color:var(--white);font-family:'Syne',sans-serif;fo
 nav{
   position:fixed;top:0;left:0;right:0;width:100%;
   z-index:500;
-  display:flex;align-items:center;justify-content:space-between;
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  align-items:center;
+  gap:0;
   padding-top:24px;padding-bottom:24px;
   background:rgba(5,5,5,0.5);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.06);
 }
-.nav-center{display:flex;gap:48px;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}
+.nav-center{display:flex;gap:48px;list-style:none;justify-self:center;position:absolute;left:50%;transform:translateX(-50%);}
 .nav-center a{color:var(--gray2);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:color .3s;}
 .nav-center a:hover{color:#fff;}
 
@@ -250,7 +253,7 @@ nav{
 /* Status badge */
 .hero-badge{
   position:absolute;
-  top:100px;left:var(--container-padding);
+  top:90px;left:var(--container-padding);
   z-index:4;
   display:flex;align-items:center;gap:8px;
   font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
@@ -263,10 +266,10 @@ nav{
 /* Tagline bottom right */
 .hero-tagline{
   position:absolute;
-  top:80px;right:var(--container-padding);
+  top:90px;right:var(--container-padding);
   z-index:4;
   text-align:right;
-  max-width:220px;
+  max-width:200px;
 }
 .hero-tagline p{
   font-size:.82rem;line-height:2;
@@ -320,7 +323,7 @@ section.cs{padding-top:120px;padding-bottom:120px;width:100%;box-sizing:border-b
 .sec-title em{font-style:italic;color:var(--gray2);}
 .line{flex:1;height:1px;background:var(--border);margin-left:24px;}
 
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;width:100%;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;width:100%;max-width:100%;}
 .about-txt p{color:var(--gray2);font-size:1rem;line-height:1.85;margin-bottom:20px;}
 .about-txt p strong{color:#fff;font-weight:600;}
 .lang-list{display:flex;flex-direction:column;margin-top:64px;}
