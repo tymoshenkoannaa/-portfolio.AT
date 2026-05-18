@@ -1620,6 +1620,78 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* Smooth hero photo scale animation */
+  .hero-photo{
+    transition:transform 1.2s cubic-bezier(0.16,1,0.3,1), opacity 1s ease !important;
+    will-change:transform !important;
+    transform-origin:center top !important;
+  }
+  /* Entrance animation - smooth */
+  @keyframes mobilePhotoIn{
+    from{opacity:0;transform:scale(1.04);}
+    to{opacity:1;transform:scale(1);}
+  }
+  .hero-photo{
+    animation:mobilePhotoIn 1.4s cubic-bezier(0.16,1,0.3,1) both !important;
+  }
+
+  /* Smooth hero photo - no abrupt scaling */
+  .hero-photo{
+    transition:transform 0.6s cubic-bezier(0.22,1,0.36,1) !important;
+    will-change:transform !important;
+  }
+
+  /* 1. Show Lebenslauf in mobile header */
+  .nav-lebenslauf{
+    display:flex !important;
+    align-items:center !important;
+    gap:6px !important;
+    background:transparent !important;
+    border:1px solid rgba(255,255,255,0.25) !important;
+    color:rgba(255,255,255,0.7) !important;
+    padding:6px 12px !important;
+    border-radius:100px !important;
+    font-size:.58rem !important;
+    letter-spacing:.08em !important;
+    text-transform:uppercase !important;
+    cursor:pointer !important;
+    font-family:'Syne',sans-serif !important;
+    margin-right:8px !important;
+  }
+  .nav-lebenslauf::before{
+    content:'↓' !important;
+    font-size:.7rem !important;
+  }
+
+  /* Hide float button on mobile - it's in header now */
+  .float-cv{display:none !important;}
+
+  /* 2. Anna Tymoshenko in header - smaller */
+  .nav-mobile-name{
+    font-size:.68rem !important;
+    letter-spacing:.1em !important;
+    color:rgba(255,255,255,0.6) !important;
+  }
+
+  /* 3. Contact - space between title and subtitle */
+  .contact-big{
+    font-size:clamp(1.2rem,4.5vw,1.7rem) !important;
+    line-height:1.3 !important;
+    white-space:normal !important;
+    overflow:visible !important;
+    text-overflow:unset !important;
+    margin-bottom:16px !important;
+    word-break:normal !important;
+  }
+  .contact-sub{
+    font-size:.78rem !important;
+    color:rgba(255,255,255,0.45) !important;
+    margin-top:0 !important;
+    margin-bottom:32px !important;
+    display:block !important;
+    line-height:1.6 !important;
+  }
+
   /* 1. Float button - higher, above footer */
   .float-cv{
     display:flex !important;
