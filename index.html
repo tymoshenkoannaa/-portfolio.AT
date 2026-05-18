@@ -1620,6 +1620,68 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* Show Anna Tymoshenko in mobile header LEFT */
+  .nav-mobile-name{
+    display:block !important;
+    visibility:visible !important;
+    width:auto !important;
+    overflow:visible !important;
+    font-family:'Playfair Display',serif !important;
+    font-size:.72rem !important;
+    letter-spacing:.12em !important;
+    text-transform:uppercase !important;
+    color:rgba(255,255,255,0.65) !important;
+  }
+
+  /* Badge - ON photo, bottom left */
+  .hero-badge{
+    display:flex !important;
+    position:fixed !important;
+    top:auto !important;
+    bottom:130px !important;
+    left:20px !important;
+    right:auto !important;
+    z-index:10 !important;
+    font-size:.52rem !important;
+    padding:6px 14px !important;
+    opacity:1 !important;
+    animation:none !important;
+    white-space:nowrap !important;
+    border-radius:100px !important;
+    background:rgba(5,5,5,0.5) !important;
+    backdrop-filter:blur(8px) !important;
+    transition:opacity .3s !important;
+  }
+
+  /* Tagline - ON photo, bottom left below badge */
+  .hero-tagline{
+    display:block !important;
+    position:fixed !important;
+    top:auto !important;
+    bottom:72px !important;
+    left:20px !important;
+    right:auto !important;
+    text-align:left !important;
+    z-index:10 !important;
+    transition:opacity .3s !important;
+  }
+  .tagline-list{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:1px !important;
+    align-items:flex-start !important;
+  }
+  .tagline-item{
+    font-size:.6rem !important;
+    line-height:1.5 !important;
+    color:rgba(255,255,255,0.55) !important;
+    letter-spacing:.1em !important;
+    text-transform:uppercase !important;
+    opacity:1 !important;
+    transform:none !important;
+    animation:none !important;
+  }
+
   /* Badge + tagline - ON TOP of photo, fixed */
   .hero-badge{
     display:flex !important;
