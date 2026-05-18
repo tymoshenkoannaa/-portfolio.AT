@@ -1620,6 +1620,55 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* 1. Badge - small, lower in hero */
+  .hero-badge{
+    position:fixed !important;
+    top:auto !important;
+    bottom:160px !important;
+    right:20px !important;
+    left:auto !important;
+    z-index:3 !important;
+    font-size:.54rem !important;
+    padding:6px 12px !important;
+    width:auto !important;
+    white-space:nowrap !important;
+    animation:none !important;
+    opacity:1 !important;
+  }
+  .hero-tagline{
+    position:fixed !important;
+    top:auto !important;
+    bottom:100px !important;
+    right:20px !important;
+    left:auto !important;
+    text-align:right !important;
+    z-index:3 !important;
+    width:auto !important;
+  }
+
+  /* 2. Contact - show all elements */
+  .contact-split{display:grid !important;grid-template-columns:1fr !important;gap:24px !important;}
+  .contact-left{display:block !important;}
+  .contact-right{display:block !important;}
+  .clink{display:flex !important;padding:16px 0 !important;border-bottom:1px solid rgba(255,255,255,0.07) !important;}
+  .clink-left{display:flex !important;align-items:center !important;gap:12px !important;flex:1 !important;}
+  .clink-ico{display:flex !important;}
+  .clink-lbl{display:block !important;font-size:.55rem !important;letter-spacing:.1em !important;text-transform:uppercase !important;color:rgba(255,255,255,0.35) !important;margin-bottom:2px !important;}
+  .clink-val{display:block !important;font-size:.85rem !important;color:#fff !important;}
+  .clink-arr{display:flex !important;color:rgba(255,255,255,0.35) !important;}
+
+  /* 3. Float button - above footer */
+  .float-cv{
+    display:flex !important;
+    position:fixed !important;
+    bottom:80px !important;
+    right:20px !important;
+    z-index:400 !important;
+    padding:10px 20px !important;
+    font-size:.62rem !important;
+    cursor:pointer !important;
+  }
+
   /* 1. Badge + tagline - lower in hero, more air */
   .hero-badge{
     position:fixed !important;
