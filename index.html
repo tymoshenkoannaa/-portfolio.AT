@@ -1831,6 +1831,79 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   pointer-events:none;
 }
 @media screen and (max-width:900px){
+  /* Float button higher - doesn't overlap footer */
+  .float-cv{
+    bottom:80px !important;
+    right:20px !important;
+  }
+
+  /* Fix arrows - no emoji, plain text only */
+  .clink-arr{
+    font-family:'Syne',sans-serif !important;
+    font-style:normal !important;
+    color:rgba(255,255,255,0.35) !important;
+    font-size:.85rem !important;
+    -webkit-text-stroke:0 !important;
+  }
+  .clink-arr::before{
+    content:'↗' !important;
+    font-family:'Syne',sans-serif !important;
+  }
+  /* Hide the span content, show only ::before */
+  .clink-arr *{display:none !important;}
+
+  /* Pcard arrow - simple text */
+  .pcard-arrow{
+    all:unset !important;
+    font-size:1rem !important;
+    font-family:'Syne',sans-serif !important;
+    color:rgba(255,255,255,0.4) !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    margin-left:auto !important;
+    flex-shrink:0 !important;
+  }
+  .pcard-arrow::after{content:'↗' !important;}
+  /* Hide any emoji inside */
+  .pcard-arrow *{display:none !important;}
+
+  /* Show Anna Tymoshenko in nav on mobile */
+  .nav-logo-name{
+    display:block !important;
+    font-family:'Playfair Display',serif !important;
+    font-size:.8rem !important;
+    letter-spacing:.12em !important;
+    text-transform:uppercase !important;
+    color:rgba(255,255,255,0.75) !important;
+    text-decoration:none !important;
+  }
+
+  /* Badge - lower from header */
+  .hero-badge{
+    top:88px !important;
+    right:20px !important;
+    left:auto !important;
+  }
+
+  /* Tagline - below badge */
+  .hero-tagline{
+    top:124px !important;
+    right:20px !important;
+    left:auto !important;
+  }
+
+  /* More space between sections */
+  section.cs{
+    padding:68px 20px !important;
+  }
+  .sec-head{margin-bottom:40px !important;}
+  .val-item{padding:18px 0 !important;}
+  .exp-item{padding:28px 0 !important;}
+  .clink{padding:20px 0 !important;}
+  .pcard-body{padding:20px !important;}
+  .skill-block{padding:28px 20px !important;}
+  .about-grid{gap:36px !important;}
+
   /* Nav - transparent with logo left */
   nav#mainNav{
     display:flex !important;
@@ -2190,7 +2263,8 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 </div>
 
 <nav id="mainNav">
-  <a href="#" class="nav-logo-name" style="font-family:'Playfair Display',serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;">Anna Tymoshenko</a>
+  <a href="#" class="nav-logo-name" style="display:none;font-family:'Playfair Display',serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;">Anna Tymoshenko</a>
+  <div class="nav-spacer" style="flex:1;"></div>
   <ul class="nav-center">
     <li><a href="#about">Über mich</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -2503,10 +2577,10 @@ footer{padding-left:80px !important;padding-right:80px !important;}
       <p class="contact-sub">Ich freue mich auf deine Nachricht.</p>
     </div>
     <div class="contact-right">
-      <a href="mailto:tymoshenko.annaa@gmail.com" class="clink"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">E-Mail</div><div class="clink-val">tymoshenko.annaa@gmail.com</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;">↗</span></a>
-      <a href="tel:+491754160787" class="clink"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">Telefon</div><div class="clink-val">+49 175 4160787</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;">↗</span></a>
-      <a href="https://www.linkedin.com/in/anna-tymoshenko-84183036b/" target="_blank" class="clink"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">LinkedIn</div><div class="clink-val">Anna Tymoshenko</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;">↗</span></a>
-      <a href="https://www.behance.net/AnnaTymoshenkoo" target="_blank" class="clink" style="border-bottom:none;"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">Behance</div><div class="clink-val">AnnaTymoshenkoo</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;">↗</span></a>
+      <a href="mailto:tymoshenko.annaa@gmail.com" class="clink"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">E-Mail</div><div class="clink-val">tymoshenko.annaa@gmail.com</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;font-family:monospace;">&#x2197;&#xFE0E;</span></a>
+      <a href="tel:+491754160787" class="clink"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">Telefon</div><div class="clink-val">+49 175 4160787</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;font-family:monospace;">&#x2197;&#xFE0E;</span></a>
+      <a href="https://www.linkedin.com/in/anna-tymoshenko-84183036b/" target="_blank" class="clink"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">LinkedIn</div><div class="clink-val">Anna Tymoshenko</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;font-family:monospace;">&#x2197;&#xFE0E;</span></a>
+      <a href="https://www.behance.net/AnnaTymoshenkoo" target="_blank" class="clink" style="border-bottom:none;"><div class="clink-left"><span class="clink-ico" style="font-size:.7rem;color:rgba(255,255,255,0.3);font-style:normal;">→</span><div><div class="clink-lbl">Behance</div><div class="clink-val">AnnaTymoshenkoo</div></div></div><span class="clink-arr" style="font-size:.8rem;color:rgba(255,255,255,0.3);font-style:normal;font-family:monospace;">&#x2197;&#xFE0E;</span></a>
     </div>
   </div>
 </section>
