@@ -1620,6 +1620,59 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* 1. Marquee - higher, on photo */
+  .marquee-wrap{
+    margin-top:-100px !important;
+    padding-top:100px !important;
+    padding-bottom:14px !important;
+    background:linear-gradient(to bottom, transparent 0%, #050505 100px) !important;
+    border-top:none !important;
+    border-bottom:none !important;
+    position:relative !important;
+    z-index:10 !important;
+  }
+
+  /* 2. More breathing room everywhere */
+  section.cs{padding:68px 24px !important;}
+  .sec-head{margin-bottom:44px !important;}
+  .about-txt p{margin-bottom:24px !important;line-height:1.85 !important;}
+  .val-item{padding:18px 0 !important;}
+  .skill-block{padding:28px 22px !important;}
+  .exp-item{padding:32px 0 !important;}
+  .clink{padding:20px 0 !important;}
+  .pcard-body{padding:22px !important;}
+  .pcard{margin-bottom:4px !important;}
+
+  /* 3. Demnächst - centered */
+  .pcard-soon .pcard-body{
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    padding:36px 20px !important;
+    gap:12px !important;
+    width:100% !important;
+  }
+  .pcard-soon *{text-align:center !important;}
+
+  /* 4. Mobile menu - smaller font, numbered */
+  .mobile-menu a{
+    font-size:1.1rem !important;
+    letter-spacing:.06em !important;
+    padding:14px 0 !important;
+    counter-increment:menu-counter !important;
+  }
+  .mobile-menu{counter-reset:menu-counter !important;}
+  .mobile-menu a::before{
+    content:counter(menu-counter, decimal-leading-zero) ' — ' !important;
+    font-family:'Syne',sans-serif !important;
+    font-size:.65rem !important;
+    color:rgba(255,255,255,0.3) !important;
+    letter-spacing:.12em !important;
+    margin-right:8px !important;
+  }
+
+
   /* 1. Anna Tymoshenko LEFT in header */
   .nav-mobile-name{
     display:block !important;
@@ -2536,13 +2589,13 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 <!-- NAV -->
 <!-- Mobile Menu Overlay -->
 <div class="mobile-menu" id="mobileMenu">
+  <button onclick="closeMobileMenu()" style="position:absolute;top:24px;right:24px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:1.2rem;cursor:pointer;padding:8px;font-family:sans-serif;">✕</button>
   <a href="#about" onclick="closeMobileMenu()">Über mich</a>
-  <a href="#skills" onclick="closeMobileMenu()">Skills & Tools</a>
+  <a href="#skills" onclick="closeMobileMenu()">Skills</a>
   <a href="#projects" onclick="closeMobileMenu()">Projekte</a>
   <a href="#experience" onclick="closeMobileMenu()">Berufserfahrung</a>
   <a href="#contact" onclick="closeMobileMenu()">Kontakt</a>
 </div>
-
 <nav id="mainNav">
   <div></div>
   <ul class="nav-center">
