@@ -1620,6 +1620,119 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* Badge - fixed RIGHT, lower from header */
+  .hero-badge{
+    position:fixed !important;
+    top:80px !important;
+    right:20px !important;
+    left:auto !important;
+    z-index:600 !important;
+    font-size:.54rem !important;
+    padding:5px 10px !important;
+    animation:none !important;
+    opacity:1 !important;
+  }
+
+  /* Tagline - fixed RIGHT below badge */
+  .hero-tagline{
+    position:fixed !important;
+    top:118px !important;
+    right:20px !important;
+    left:auto !important;
+    bottom:auto !important;
+    text-align:right !important;
+    z-index:600 !important;
+  }
+  .tagline-list{display:flex !important;flex-direction:column !important;gap:2px !important;align-items:flex-end !important;}
+  .tagline-item{font-size:.68rem !important;line-height:1.4 !important;color:rgba(255,255,255,0.65) !important;letter-spacing:.05em !important;opacity:1 !important;transform:none !important;animation:none !important;}
+
+  /* PROJECT CARDS - mobile adapted */
+  .proj-cards{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:12px !important;
+  }
+  .pcard{
+    flex-direction:column !important;
+    border-radius:16px !important;
+    transform:none !important;
+    background:#0a0a0a !important;
+    overflow:hidden !important;
+    border:1px solid rgba(255,255,255,0.08) !important;
+  }
+  .pcard:hover{transform:none !important;box-shadow:none !important;}
+
+  /* Image on top */
+  .pcard-img{
+    width:100% !important;
+    min-width:unset !important;
+    height:180px !important;
+    order:-1 !important;
+    flex-shrink:0 !important;
+  }
+  .pcard-img img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    filter:brightness(.6) !important;
+  }
+
+  /* Card body */
+  .pcard-body{
+    padding:18px !important;
+    display:flex !important;
+    flex-direction:column !important;
+  }
+  .pcard-header{margin-bottom:6px !important;}
+  .pcard-num{font-size:.58rem !important;}
+  .pcard-name{font-size:1.05rem !important;line-height:1.2 !important;}
+  .pcard-sub{font-size:.6rem !important;margin-bottom:10px !important;}
+
+  /* Show desc and tasks always on mobile */
+  .pcard-desc{
+    padding-left:0 !important;
+    max-height:none !important;
+    opacity:1 !important;
+    margin-top:8px !important;
+    font-size:.72rem !important;
+    line-height:1.6 !important;
+  }
+  .pcard-tasks{
+    padding-left:0 !important;
+    max-height:none !important;
+    opacity:1 !important;
+    margin-top:8px !important;
+  }
+  .pcard-task{font-size:.67rem !important;line-height:1.6 !important;}
+
+  /* Footer with badges */
+  .pcard-footer{
+    max-height:none !important;
+    opacity:1 !important;
+    margin-top:12px !important;
+    padding-top:12px !important;
+    border-top:1px solid rgba(255,255,255,0.06) !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+  }
+  .pcard-badges{display:flex !important;flex-wrap:wrap !important;gap:6px !important;}
+  .pcard-badge{font-size:.55rem !important;padding:3px 8px !important;}
+
+  /* Arrow - simple */
+  .pcard-arrow{
+    all:unset !important;
+    font-size:1rem !important;
+    color:rgba(255,255,255,0.4) !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    flex-shrink:0 !important;
+  }
+  .pcard-hint{display:none !important;}
+
+  /* Coming soon card */
+  .pcard-soon{min-height:64px !important;}
+
   /* Badge - RIGHT side */
   .hero-badge{
     position:fixed !important;
