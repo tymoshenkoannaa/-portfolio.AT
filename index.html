@@ -1620,6 +1620,83 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* Hero - smaller height, marquee closer */
+  .hero{
+    height:75svh !important;
+  }
+  /* Marquee - pull up closer to hero */
+  .marquee-wrap{
+    margin-top:-40px !important;
+    padding-top:40px !important;
+  }
+
+  /* Mobile menu - slides from top, header stays */
+  .mobile-menu{
+    display:flex !important;
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    background:rgba(5,5,5,0.97) !important;
+    z-index:8999 !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+    transform:translateY(-20px) !important;
+    transition:opacity .35s ease, transform .35s ease !important;
+  }
+  .mobile-menu.open{
+    opacity:1 !important;
+    pointer-events:all !important;
+    transform:translateY(0) !important;
+  }
+  .mobile-menu a{
+    font-family:'Playfair Display',serif !important;
+    font-size:1.4rem !important;
+    color:rgba(255,255,255,0.75) !important;
+    text-decoration:none !important;
+    padding:12px 0 !important;
+    border-bottom:1px solid rgba(255,255,255,0.07) !important;
+    width:70% !important;
+    text-align:center !important;
+    display:block !important;
+    letter-spacing:.04em !important;
+    transition:color .2s !important;
+  }
+  .mobile-menu a:last-child{border:none !important;}
+  .mobile-menu a:hover{color:#fff !important;}
+
+  /* Demnächst card body - column centered */
+  .pcard-soon .pcard-body{
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    padding:28px 20px !important;
+    gap:8px !important;
+  }
+
+  /* Demnächst card - centered text */
+  .pcard-soon{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex-direction:column !important;
+    text-align:center !important;
+    min-height:100px !important;
+    padding:32px 20px !important;
+  }
+  .pcard-soon *{
+    text-align:center !important;
+    width:100% !important;
+  }
+
+  /* Hide floating Lebenslauf button on mobile - it's in header */
+  .float-cv{display:none !important;}
+
   /* Smooth hero photo scale animation */
   .hero-photo{
     transition:transform 1.2s cubic-bezier(0.16,1,0.3,1), opacity 1s ease !important;
@@ -2455,6 +2532,16 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
     font-weight:400 !important;
   }
 
+
+  /* FORCE hide floating CV button on mobile */
+  #floatCV,
+  .float-cv{
+    display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+  }
+
 @media screen and (max-width:480px){
   .hero-name{font-size:clamp(2.2rem,11vw,3.2rem) !important;}
   section.cs{padding:44px 16px !important;}
@@ -2803,8 +2890,9 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 <!-- NAV -->
 <!-- Mobile Menu Overlay -->
 <div class="mobile-menu" id="mobileMenu">
+  <button onclick="closeMobileMenu()" style="position:absolute;top:20px;right:20px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.4rem;cursor:pointer;line-height:1;padding:8px;">✕</button>
   <a href="#about" onclick="closeMobileMenu()">Über mich</a>
-  <a href="#skills" onclick="closeMobileMenu()">Skills & Tools</a>
+  <a href="#skills" onclick="closeMobileMenu()">Skills</a>
   <a href="#projects" onclick="closeMobileMenu()">Projekte</a>
   <a href="#experience" onclick="closeMobileMenu()">Berufserfahrung</a>
   <a href="#contact" onclick="closeMobileMenu()">Kontakt</a>
