@@ -23,12 +23,12 @@ nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:rgba(5,5,5,0.7);
+  background:rgba(5,5,5,0.5);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.06);
   box-sizing:border-box;
-  padding:44px var(--container-padding);
+  padding:28px 80px;
 }
 section.cs{
   padding-left:var(--container-padding) !important;
@@ -104,7 +104,7 @@ nav{
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.06);
 }
-.nav-mobile-name{display:none !important;}.nav-center{display:flex;gap:48px;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}
+.nav-center{display:flex;gap:48px;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}
 .nav-links{display:flex;gap:40px;list-style:none;}
 .nav-links a{color:rgba(255,255,255,0.5);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:color .3s;}
 .nav-links a:hover{color:#fff;}
@@ -296,11 +296,11 @@ nav{
 /* Tagline bottom right */
 .hero-tagline{
   position:fixed;
-  top:110px;
+  top:100px;
   right:80px;
-  left:auto;
   z-index:4;
   text-align:right;
+  max-width:320px;
 }
 .hero-tagline p{
   font-size:.95rem;
@@ -1613,21 +1613,18 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 /* Desktop hero badge - LEFT */
 .hero-badge{
   position:fixed;
-  top:110px;
+  top:100px;
   left:80px;
   z-index:4;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:.65rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
   color:rgba(255,255,255,0.5);
   border:1px solid rgba(255,255,255,0.1);
-  padding:8px 16px;
-  border-radius:100px;
+  padding:8px 16px;border-radius:100px;
 }
 
+
+.nav-mobile-name{display:none;}
 @media screen and (max-width:900px){
   /* Show Anna Tymoshenko in mobile header LEFT */
 
