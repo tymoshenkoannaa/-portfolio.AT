@@ -1831,6 +1831,65 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   pointer-events:none;
 }
 @media screen and (max-width:900px){
+  /* 1. Hide ALL Anna Tymoshenko in footer on mobile */
+  .footer-name{display:none !important;}
+  footer .hero-firstname{display:none !important;}
+
+  /* 2. Badge + tagline - stay fixed, don't scroll */
+  .hero-badge{
+    position:fixed !important;
+    top:72px !important;right:20px !important;left:auto !important;
+    z-index:600 !important;
+    opacity:1 !important;
+    transition:opacity .3s !important;
+  }
+  .hero-tagline{
+    position:fixed !important;
+    top:110px !important;right:20px !important;left:auto !important;
+    z-index:600 !important;
+    opacity:1 !important;
+    transition:opacity .3s !important;
+  }
+
+  /* 3. More space between sections */
+  section.cs{padding:72px 20px !important;}
+  .sec-head{margin-bottom:44px !important;}
+  .proj-cards{gap:12px !important;}
+  .skill-block{padding:28px 20px !important;}
+  .exp-item{padding:28px 0 !important;}
+  .clink{padding:20px 0 !important;}
+
+  /* 4. Arrows - no emoji, pure text */
+  .clink-arr{
+    font-family:'Syne',sans-serif !important;
+    font-style:normal !important;
+    color:rgba(255,255,255,0.35) !important;
+    font-size:.85rem !important;
+  }
+  .pcard-arrow{
+    all:unset !important;
+    font-family:'Syne',sans-serif !important;
+    font-size:1rem !important;
+    color:rgba(255,255,255,0.4) !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    margin-left:auto !important;
+    flex-shrink:0 !important;
+  }
+
+  /* 5. Float button - higher, with document icon, doesn't overlap footer */
+  .float-cv{
+    display:flex !important;
+    position:fixed !important;
+    bottom:96px !important;
+    right:20px !important;
+    z-index:400 !important;
+    padding:11px 20px !important;
+    font-size:.62rem !important;
+    cursor:pointer !important;
+    gap:8px !important;
+  }
+
   /* Float button higher - doesn't overlap footer */
   .float-cv{
     bottom:80px !important;
@@ -2697,8 +2756,8 @@ function closeProto() {
 
 
 <!-- FLOATING CV BUTTON -->
-<button class="float-cv" id="floatCV" onclick="openCV()">
-  <span class="float-cv-icon" style="font-style:normal;">≡</span>
+<button class="float-cv" id="floatCV" onclick="openCV()"><span style="font-size:.8rem;">📄</span>
+  
   Lebenslauf
 </button>
 
@@ -2891,13 +2950,13 @@ function updateHeroElements(){
   const tagline = document.querySelector('.hero-tagline');
   const scrolled = window.scrollY > heroBottom - 100;
   if(badge){
-    badge.style.opacity = scrolled ? '0' : '';
-    badge.style.pointerEvents = scrolled ? 'none' : '';
+    badge.style.opacity = scrolled ? '0' : '1';
+    badge.style.pointerEvents = scrolled ? 'none' : 'all';
     badge.style.transition = 'opacity 0.4s ease';
   }
   if(tagline){
-    tagline.style.opacity = scrolled ? '0' : '';
-    tagline.style.pointerEvents = scrolled ? 'none' : '';
+    tagline.style.opacity = scrolled ? '0' : '1';
+    tagline.style.pointerEvents = scrolled ? 'none' : 'all';
     tagline.style.transition = 'opacity 0.4s ease';
   }
 }
