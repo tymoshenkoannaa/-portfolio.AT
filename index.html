@@ -1620,6 +1620,95 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* 1. Anna Tymoshenko - bottom left with proper margin */
+  .hero-firstname{
+    position:absolute !important;
+    bottom:32px !important;
+    left:20px !important;
+    right:auto !important;
+    top:auto !important;
+    font-size:clamp(1.5rem,5.5vw,2rem) !important;
+    color:rgba(255,255,255,0.8) !important;
+    letter-spacing:.08em !important;
+    line-height:1.1 !important;
+    z-index:3 !important;
+    margin:0 !important;
+  }
+
+  /* 2. Badge - move to RIGHT side */
+  .hero-badge{
+    position:fixed !important;
+    top:70px !important;
+    right:20px !important;
+    left:auto !important;
+    z-index:499 !important;
+    font-size:.55rem !important;
+    padding:5px 10px !important;
+    animation:none !important;
+    opacity:1 !important;
+  }
+
+  /* 3. Tagline - right side, tighter spacing */
+  .hero-tagline{
+    position:fixed !important;
+    top:110px !important;
+    right:20px !important;
+    left:auto !important;
+    bottom:auto !important;
+    text-align:right !important;
+    z-index:499 !important;
+    max-width:160px !important;
+  }
+  .tagline-list{gap:0 !important;}
+  .tagline-item{
+    font-size:.72rem !important;
+    line-height:1.5 !important;
+    color:rgba(255,255,255,0.65) !important;
+    letter-spacing:.06em !important;
+    opacity:0 !important;
+    transform:translateY(12px) !important;
+    animation:taglineUp .5s ease forwards !important;
+  }
+  .tagline-item:nth-child(1){animation-delay:.3s !important;}
+  .tagline-item:nth-child(2){animation-delay:.5s !important;}
+  .tagline-item:nth-child(3){animation-delay:.7s !important;}
+
+  /* 4. Hero - smooth gradient transition at bottom */
+  .hero-photo-overlay{
+    position:absolute !important;
+    inset:0 !important;
+    background:linear-gradient(
+      to top,
+      rgba(5,5,5,1) 0%,
+      rgba(5,5,5,0.9) 15%,
+      rgba(5,5,5,0.4) 40%,
+      rgba(5,5,5,0) 65%,
+      transparent 100%
+    ) !important;
+    z-index:1 !important;
+  }
+
+  /* 5. Marquee - overlaps hero for smooth transition */
+  .marquee-wrap{
+    margin-top:-60px !important;
+    position:relative !important;
+    z-index:10 !important;
+    background:linear-gradient(to bottom, transparent 0%, #050505 60px) !important;
+    padding-top:60px !important;
+    padding-bottom:20px !important;
+  }
+
+  /* 6. More breathing room in sections */
+  section.cs{
+    padding:56px 24px !important;
+  }
+  .sec-head{margin-bottom:40px !important;}
+  .val-item{padding:16px 0 !important;}
+  .exp-item{padding:28px 0 !important;}
+  .clink{padding:18px 0 !important;}
+  .pcard-body{padding:20px !important;}
+  .skill-block{padding:28px 22px !important;}
+
   /* CONTACT - proper spacing on mobile */
   .contact-big{
     font-size:clamp(1.4rem,5vw,2rem) !important;
