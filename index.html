@@ -1620,6 +1620,31 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* Marquee - higher and narrower */
+  .marquee-wrap{
+    margin-top:-60px !important;
+    padding-top:60px !important;
+    padding-bottom:12px !important;
+    font-size:.6rem !important;
+  }
+  .marquee-track{gap:20px !important;}
+  .marquee-item{font-size:.6rem !important;letter-spacing:.12em !important;}
+
+  /* Badge - back, top right, below header */
+  .hero-badge{
+    display:flex !important;
+    position:fixed !important;
+    top:72px !important;
+    right:20px !important;
+    left:auto !important;
+    z-index:600 !important;
+    font-size:.52rem !important;
+    padding:5px 12px !important;
+    opacity:1 !important;
+    animation:none !important;
+    white-space:nowrap !important;
+  }
+
   /* Hero - smaller height, marquee closer */
   .hero{
     height:75svh !important;
@@ -3407,6 +3432,16 @@ function toggleMobileMenu(){
   const menu = document.getElementById('mobileMenu');
   const btn = document.getElementById('menuBtn');
   menu.classList.toggle('open');
+  // Lock/unlock body scroll
+  if(menu.classList.contains('open')){
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+  } else {
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+  }
   // Animate hamburger to X
   const spans = btn.querySelectorAll('span');
   if(menu.classList.contains('open')){
@@ -3425,6 +3460,9 @@ function closeMobileMenu(){
   const menu = document.getElementById('mobileMenu');
   const btn = document.getElementById('menuBtn');
   menu.classList.remove('open');
+  document.body.style.overflow = '';
+  document.body.style.position = '';
+  document.body.style.width = '';
   const spans = btn.querySelectorAll('span');
   spans[0].style.transform='';
   spans[1].style.opacity='1';
