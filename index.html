@@ -28,7 +28,7 @@ nav{
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.06);
   box-sizing:border-box;
-  padding:36px var(--container-padding);
+  padding:44px var(--container-padding);
 }
 section.cs{
   padding-left:var(--container-padding) !important;
@@ -104,7 +104,7 @@ nav{
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.06);
 }
-.nav-mobile-name{display:none;}.nav-center{display:flex;gap:48px;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}
+.nav-mobile-name{display:none !important;visibility:hidden !important;width:0 !important;overflow:hidden !important;}.nav-center{display:flex;gap:48px;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}
 .nav-links{display:flex;gap:40px;list-style:none;}
 .nav-links a{color:rgba(255,255,255,0.5);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:color .3s;}
 .nav-links a:hover{color:#fff;}
@@ -1620,6 +1620,55 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* Badge + tagline - ON TOP of photo, fixed */
+  .hero-badge{
+    display:flex !important;
+    position:fixed !important;
+    bottom:120px !important;
+    left:20px !important;
+    right:auto !important;
+    top:auto !important;
+    z-index:10 !important;
+    font-size:.52rem !important;
+    padding:6px 14px !important;
+    opacity:1 !important;
+    animation:none !important;
+    white-space:nowrap !important;
+    border:1px solid rgba(255,255,255,0.2) !important;
+    border-radius:100px !important;
+    background:rgba(5,5,5,0.5) !important;
+    backdrop-filter:blur(8px) !important;
+    transition:opacity .4s !important;
+  }
+
+  .hero-tagline{
+    display:block !important;
+    position:fixed !important;
+    bottom:60px !important;
+    left:20px !important;
+    right:auto !important;
+    top:auto !important;
+    text-align:left !important;
+    z-index:10 !important;
+    transition:opacity .4s !important;
+  }
+  .tagline-list{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:1px !important;
+    align-items:flex-start !important;
+  }
+  .tagline-item{
+    font-size:.62rem !important;
+    line-height:1.5 !important;
+    color:rgba(255,255,255,0.6) !important;
+    letter-spacing:.1em !important;
+    text-transform:uppercase !important;
+    opacity:1 !important;
+    transform:none !important;
+    animation:none !important;
+  }
+
   /* Badge - show on hero, bottom right */
   .hero-badge{
     display:flex !important;
@@ -2280,7 +2329,7 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   /* === MOBILE HEADER === */
 
   /* Hide desktop name on mobile (hidden by default on desktop) */
-  .nav-mobile-name{display:none;}
+  .nav-mobile-name{display:none !important;}
 
   nav#mainNav{
     display:flex !important;
@@ -2356,7 +2405,7 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
     background:rgba(5,5,5,0.9) !important;
     backdrop-filter:blur(20px) !important;
   }
-  .nav-mobile-name{display:none;}.nav-center{display:flex;gap:48px;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}
+  .nav-mobile-name{display:none !important;visibility:hidden !important;width:0 !important;overflow:hidden !important;}.nav-center{display:flex;gap:48px;list-style:none;position:absolute;left:50%;transform:translateX(-50%);}
 .nav-links{display:flex;gap:40px;list-style:none;}
 .nav-links a{color:rgba(255,255,255,0.5);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:color .3s;}
 .nav-links a:hover{color:#fff;}
