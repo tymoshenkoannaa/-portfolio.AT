@@ -332,7 +332,7 @@ nav{
 }
 
 /* MARQUEE */
-.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding-top:20px;padding-bottom:20px;overflow:hidden;position:relative;z-index:2;}
+.marquee-wrap{padding-top:20px;padding-bottom:20px;overflow:hidden;position:relative;z-index:2;}
 .marquee{display:flex;gap:60px;animation:marquee 18s linear infinite;white-space:nowrap;}
 .marquee-item{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);flex-shrink:0;}
 .marquee-dot{color:var(--gray2);}
@@ -1620,6 +1620,60 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* 1. SCROLL LOCK - stronger version */
+  body.menu-open{
+    overflow:hidden !important;
+    position:fixed !important;
+    width:100% !important;
+    top:0 !important;
+  }
+
+  /* 2. Marquee - right under photo, no border lines */
+  .marquee-wrap{
+    margin-top:0 !important;
+    padding-top:12px !important;
+    padding-bottom:12px !important;
+    
+    
+    background:#050505 !important;
+    position:relative !important;
+    z-index:10 !important;
+  }
+  .marquee-wrap::before,
+  .marquee-wrap::after{
+    display:none !important;
+  }
+  .marquee-track{gap:24px !important;}
+  .marquee-item{
+    font-size:.58rem !important;
+    letter-spacing:.14em !important;
+  }
+  .marquee-sep{display:none !important;}
+
+  /* 3. Badge - green dot, top right, below header */
+  .hero-badge{
+    display:flex !important;
+    position:fixed !important;
+    top:72px !important;
+    right:20px !important;
+    left:auto !important;
+    z-index:600 !important;
+    font-size:.52rem !important;
+    padding:5px 12px !important;
+    opacity:1 !important;
+    animation:none !important;
+    white-space:nowrap !important;
+    border:1px solid rgba(255,255,255,0.15) !important;
+    border-radius:100px !important;
+    background:rgba(5,5,5,0.6) !important;
+    backdrop-filter:blur(8px) !important;
+  }
+
+  /* Hero height - photo takes up to red line position */
+  .hero{
+    height:72svh !important;
+  }
+
   /* Marquee - higher and narrower */
   .marquee-wrap{
     margin-top:-60px !important;
@@ -3434,13 +3488,9 @@ function toggleMobileMenu(){
   menu.classList.toggle('open');
   // Lock/unlock body scroll
   if(menu.classList.contains('open')){
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
+    document.body.classList.add('menu-open');
   } else {
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.body.style.width = '';
+    document.body.classList.remove('menu-open');
   }
   // Animate hamburger to X
   const spans = btn.querySelectorAll('span');
@@ -3460,9 +3510,7 @@ function closeMobileMenu(){
   const menu = document.getElementById('mobileMenu');
   const btn = document.getElementById('menuBtn');
   menu.classList.remove('open');
-  document.body.style.overflow = '';
-  document.body.style.position = '';
-  document.body.style.width = '';
+  document.body.classList.remove('menu-open');
   const spans = btn.querySelectorAll('span');
   spans[0].style.transform='';
   spans[1].style.opacity='1';
