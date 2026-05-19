@@ -2420,6 +2420,16 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   }
   .nav-lebenslauf::before{content:'↓ ' !important;}
 
+
+  /* Remove double arrow - button already has ↓ in text */
+  .nav-lebenslauf::before{content:'' !important;display:none !important;}
+
+  /* Menu font smaller (1.6rem * 0.67 = ~1.1rem) */
+  .mobile-menu a{
+    font-size:.9rem !important;
+    letter-spacing:.15em !important;
+  }
+
 @media screen and (max-width:480px){
   .hero-name{font-size:clamp(2.2rem,11vw,3.2rem) !important;}
   section.cs{padding:44px 16px !important;}
