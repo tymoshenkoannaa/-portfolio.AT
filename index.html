@@ -2430,6 +2430,50 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
     letter-spacing:.15em !important;
   }
 
+
+  /* Hide task list in project cards on mobile */
+  .pcard-tasks{display:none !important;}
+
+  /* More space between contact headline and subtitle */
+  .contact-big{
+    margin-bottom:24px !important;
+  }
+  .contact-sub{
+    margin-top:0 !important;
+    margin-bottom:36px !important;
+    padding-top:0 !important;
+  }
+
+
+  /* Tasks hidden by default, shown on tap */
+  .pcard-tasks{
+    display:block !important;
+    max-height:0 !important;
+    overflow:hidden !important;
+    opacity:0 !important;
+    transition:max-height .4s ease, opacity .3s ease !important;
+    margin-top:0 !important;
+  }
+  .pcard.expanded .pcard-tasks{
+    max-height:300px !important;
+    opacity:1 !important;
+    margin-top:8px !important;
+  }
+  /* Visual hint - tap to expand */
+  .pcard::after{
+    content:'+ mehr' !important;
+    display:block !important;
+    font-size:.55rem !important;
+    letter-spacing:.1em !important;
+    text-transform:uppercase !important;
+    color:rgba(255,255,255,0.25) !important;
+    padding:8px 18px 14px !important;
+    font-family:'Syne',sans-serif !important;
+  }
+  .pcard.expanded::after{
+    content:'— weniger' !important;
+  }
+
 @media screen and (max-width:480px){
   .hero-name{font-size:clamp(2.2rem,11vw,3.2rem) !important;}
   section.cs{padding:44px 16px !important;}
@@ -3450,6 +3494,17 @@ function closeCV() {
   document.getElementById('cvModal').classList.remove('open');
   document.body.style.overflow = '';
 }
+// Mobile card tap to expand
+if(window.innerWidth <= 900){
+  document.querySelectorAll('.pcard:not(.pcard-soon)').forEach(card => {
+    card.addEventListener('click', function(e){
+      // Don't expand if clicking arrow link
+      if(e.target.closest('.pcard-arrow') || e.target.closest('a')) return;
+      this.classList.toggle('expanded');
+    });
+  });
+}
+
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeCV();
