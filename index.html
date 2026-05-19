@@ -43,7 +43,7 @@ footer{
   padding-right:var(--container-padding) !important;
 }
 
-html{scroll-behavior:smooth;}.nav-mobile-name{display:none !important;position:absolute !important;}
+html{scroll-behavior:smooth;}.nav-mobile-name{display:none !important;position:absolute !important;width:0 !important;height:0 !important;overflow:hidden !important;}
 /* GLOBAL PADDING */
 nav,section.cs,.marquee-wrap,footer{
   padding-left:var(--container-padding) !important;
@@ -112,7 +112,7 @@ nav{
 .nav-center a:hover{color:#fff;}
 
 
-.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-right{display:flex;align-items:center;gap:16px;margin-left:auto;}
 .nav-location{font-size:.7rem;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;}
 .nav-cta{background:#fff;color:#000;padding:10px 28px;font-family:'Syne',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:opacity .3s;border-radius:100px;}
 .nav-cta:hover{opacity:.8;}
@@ -1974,52 +1974,10 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   nav a.nav-cta{display:none !important;}
 
   /* Anna Tymoshenko LEFT */
-  span.nav-mobile-name{
-    display:block !important;
-    font-family:'Playfair Display',serif !important;
-    font-size:.65rem !important;
-    letter-spacing:.14em !important;
-    text-transform:uppercase !important;
-    color:rgba(255,255,255,0.65) !important;
-    white-space:nowrap !important;
-    flex-shrink:0 !important;
-  }
 
   /* Lebenslauf button */
-  button.nav-lebenslauf{
-    display:flex !important;
-    align-items:center !important;
-    background:transparent !important;
-    border:1px solid rgba(255,255,255,0.25) !important;
-    color:rgba(255,255,255,0.8) !important;
-    padding:6px 12px !important;
-    border-radius:100px !important;
-    font-size:.56rem !important;
-    letter-spacing:.1em !important;
-    text-transform:uppercase !important;
-    cursor:pointer !important;
-    font-family:'Syne',sans-serif !important;
-    white-space:nowrap !important;
-  }
 
   /* Burger */
-  .mobile-menu-btn{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:center !important;
-    justify-content:center !important;
-    gap:5px !important;
-    width:36px !important;height:36px !important;
-    background:none !important;border:none !important;
-    cursor:pointer !important;padding:4px !important;
-    flex-shrink:0 !important;
-  }
-  .mobile-menu-btn span{
-    display:block !important;
-    width:20px !important;height:1.5px !important;
-    background:rgba(255,255,255,0.9) !important;
-  }
-  .nav-right{display:flex !important;align-items:center !important;gap:10px !important;}
 
   /* MOBILE MENU */
   .mobile-menu{
@@ -2187,6 +2145,77 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   .f-status{display:flex !important;align-items:center !important;gap:6px !important;font-size:.6rem !important;letter-spacing:.12em !important;text-transform:uppercase !important;color:rgba(255,255,255,0.4) !important;}
   .fdot{display:block !important;width:6px !important;height:6px !important;border-radius:50% !important;background:#4ade80 !important;animation:blink 2s infinite !important;flex-shrink:0 !important;}
 
+
+  /* ══ MOBILE NAV - FINAL ══ */
+  span.nav-mobile-name{
+    display:block !important;
+    font-family:'Playfair Display',serif !important;
+    font-size:.65rem !important;
+    letter-spacing:.14em !important;
+    text-transform:uppercase !important;
+    color:rgba(255,255,255,0.65) !important;
+    white-space:nowrap !important;
+    position:relative !important;
+    width:auto !important;
+    height:auto !important;
+    overflow:visible !important;
+  }
+  button.nav-lebenslauf{
+    display:flex !important;
+    align-items:center !important;
+    gap:4px !important;
+    background:transparent !important;
+    border:1px solid rgba(255,255,255,0.25) !important;
+    color:rgba(255,255,255,0.8) !important;
+    padding:6px 12px !important;
+    border-radius:100px !important;
+    font-size:.56rem !important;
+    letter-spacing:.1em !important;
+    text-transform:uppercase !important;
+    cursor:pointer !important;
+    font-family:'Syne',sans-serif !important;
+    white-space:nowrap !important;
+  }
+  button.nav-lebenslauf::before{content:'↓ ' !important;}
+  .mobile-menu-btn{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:5px !important;
+    width:36px !important;
+    height:36px !important;
+    background:none !important;
+    border:none !important;
+    cursor:pointer !important;
+    padding:4px !important;
+    flex-shrink:0 !important;
+  }
+  .mobile-menu-btn span{
+    display:block !important;
+    width:20px !important;
+    height:1.5px !important;
+    background:rgba(255,255,255,0.9) !important;
+  }
+  .nav-right{
+    display:flex !important;
+    align-items:center !important;
+    gap:10px !important;
+    margin-left:auto !important;
+  }
+  nav ul.nav-center{display:none !important;}
+  nav a.nav-cta{display:none !important;}
+
+
+  /* Contact - equal spacing between items */
+  .clink{padding:12px 0 !important;}
+  .contact-big{margin-bottom:16px !important;}
+  .contact-sub{margin-bottom:24px !important;}
+
+  /* Mobile menu - solid black background */
+  .mobile-menu{
+    background:rgba(5,5,5,1) !important;
+  }
 @media screen and (max-width:480px){
   section.cs{padding:48px 14px !important;}
   .contact-big{font-size:clamp(1.1rem,5vw,1.5rem) !important;}
