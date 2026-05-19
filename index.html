@@ -2856,7 +2856,7 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 
   /* Marquee — overlap hero photo */
   .marquee-wrap{
-    margin-top:-120px !important;
+    margin-top:-180px !important;
     position:relative !important;
     z-index:10 !important;
     padding:12px 20px !important;
@@ -2865,15 +2865,12 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
     border-bottom:none !important;
   }
 
-  /* Contact — more space between text and links */
-  .contact-left{
-    margin-bottom:32px !important;
-  }
-
-  /* Contact — space between heading and subtitle */
-  .contact-big{
-    margin-bottom:16px !important;
-  }
+  /* Contact — compact on mobile */
+  #contact.cs{padding-top:44px !important;padding-bottom:44px !important;}
+  .contact-left{margin-bottom:20px !important;}
+  .contact-big{margin-bottom:36px !important;}
+  .clink{padding:12px 0 !important;}
+  .clink-val{font-size:.82rem !important;}
 
   /* Footer mobile — each item on its own line */
   .footer-bottom{flex-direction:column !important;align-items:center !important;gap:6px !important;text-align:center !important;}
@@ -2891,6 +2888,10 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 
   /* Demnächst card — smaller height */
   .pcard-soon .pcard-body{padding:20px !important;}
+
+  /* Cards always fully visible — disable scroll fade */
+  .m-fade{opacity:1 !important;transform:none !important;transition:none !important;}
+  .pcard{opacity:1 !important;transform:none !important;}
 
   /* Download button — same size as nav-cta */
   .cv-download{
