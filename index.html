@@ -43,7 +43,7 @@ footer{
   padding-right:var(--container-padding) !important;
 }
 
-html{scroll-behavior:smooth;}.nav-mobile-name{display:none !important;}
+html{scroll-behavior:smooth;}.nav-mobile-name{display:none !important;position:absolute !important;}
 /* GLOBAL PADDING */
 nav,section.cs,.marquee-wrap,footer{
   padding-left:var(--container-padding) !important;
@@ -2179,6 +2179,14 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   .proj-cards{gap:12px !important;}
   .contact-big{margin-bottom:28px !important;}
   .contact-sub{margin-bottom:40px !important;}
+
+  /* Show contact icons */
+  .clink-ico{display:flex !important;color:rgba(255,255,255,0.3) !important;font-size:.7rem !important;}
+
+  /* Show footer status with green dot */
+  .f-status{display:flex !important;align-items:center !important;gap:6px !important;font-size:.6rem !important;letter-spacing:.12em !important;text-transform:uppercase !important;color:rgba(255,255,255,0.4) !important;}
+  .fdot{display:block !important;width:6px !important;height:6px !important;border-radius:50% !important;background:#4ade80 !important;animation:blink 2s infinite !important;flex-shrink:0 !important;}
+
 @media screen and (max-width:480px){
   section.cs{padding:48px 14px !important;}
   .contact-big{font-size:clamp(1.1rem,5vw,1.5rem) !important;}
