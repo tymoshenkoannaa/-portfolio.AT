@@ -2856,7 +2856,7 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 
   /* Marquee — overlap hero photo */
   .marquee-wrap{
-    margin-top:-180px !important;
+    margin-top:-140px !important;
     position:relative !important;
     z-index:10 !important;
     padding:12px 20px !important;
@@ -2872,11 +2872,12 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   .clink{padding:12px 0 !important;}
   .clink-val{font-size:.82rem !important;}
 
-  /* Footer mobile — each item on its own line */
+  /* Footer mobile — one line */
   .footer-bottom{flex-direction:column !important;align-items:center !important;gap:6px !important;text-align:center !important;}
-  .f-left{flex-direction:column !important;align-items:center !important;gap:4px !important;}
-  .f-sep{display:none !important;}
-  .f-status{margin-top:4px !important;}
+  .f-left{flex-direction:row !important;align-items:center !important;flex-wrap:nowrap !important;}
+  .f-sep{display:inline !important;}
+  .f-copy,.f-rights,.f-sep{font-size:.55rem !important;letter-spacing:.06em !important;}
+  .f-status{margin-top:4px !important;font-size:.6rem !important;}
 
   /* Mobile menu — solid black background */
   .mobile-menu{background:#050505 !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;}
