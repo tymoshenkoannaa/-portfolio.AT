@@ -273,6 +273,8 @@ nav{
   object-fit:contain;
   object-position:center center;
   z-index:2;
+}
+.hero-photo.photo-brighten{
   animation:photoBrighten 4s ease forwards;
 }
 @keyframes photoBrighten{
@@ -3605,6 +3607,27 @@ function updateHeroElements(){
 }
 window.addEventListener('scroll', updateHeroElements, {passive:true});
 updateHeroElements();
+
+// Restart photo brighten animation when hero comes back into view
+(function(){
+  const photo = document.querySelector('.hero-photo');
+  if(!photo) return;
+  let wasVisible = false;
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !wasVisible){
+        photo.classList.remove('photo-brighten');
+        void photo.offsetWidth; // force reflow to restart animation
+        photo.classList.add('photo-brighten');
+        wasVisible = true;
+      } else if(!e.isIntersecting){
+        wasVisible = false;
+      }
+    });
+  },{threshold:0.3});
+  obs.observe(document.getElementById('hero'));
+  photo.classList.add('photo-brighten');
+})();
 
 function updateNav(){
   const btn = document.getElementById('menuBtn');
