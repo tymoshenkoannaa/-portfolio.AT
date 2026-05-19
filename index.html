@@ -260,8 +260,25 @@ nav{
   background:#050505;
 }
 
-/* Big background name */
-.hero-bg-name{display:none !important;}
+/* Big background name — behind photo */
+.hero-bg-name{
+  display:block !important;
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  z-index:1;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(5rem,13vw,14rem);
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.07);
+  text-align:center;
+  line-height:0.9;
+  white-space:nowrap;
+  pointer-events:none;
+  user-select:none;
+}
 
 /* Photo centered, full height */
 .hero-photo{
@@ -2885,6 +2902,12 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
     background:rgba(255,255,255,0.85) !important;
   }
 
+  /* Hide right tagline on desktop — already in marquee */
+  .hero-tagline{display:none !important;}
+
+  /* Raise marquee on desktop — visual only, layout stays */
+  .marquee-wrap{position:relative !important;top:-120px !important;margin-bottom:-120px !important;z-index:10 !important;}
+
   /* Marquee — overlap hero photo */
   .marquee-wrap{
     margin-top:-140px !important;
@@ -2927,6 +2950,9 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 
   /* Hero — push content lower */
   .hero-left{padding-bottom:20px !important;}
+  /* Hide bg-name and firstname on mobile */
+  .hero-bg-name{display:none !important;}
+  .hero-firstname{display:none !important;}
 
   /* Habermann card — smaller font and arrow */
   .pcard-nozoom .pcard-name{font-size:.82rem !important;}
@@ -3003,16 +3029,13 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 <!-- HERO -->
 <section class="hero" id="hero">
   <!-- Giant background name -->
-  <div class="hero-bg-name">Tymoshenko</div>
+  <div class="hero-bg-name">Anna<br>Tymoshenko</div>
 
   <!-- Photo full height centered -->
   <picture>
     <source media="(max-width:900px)" srcset="photo_mobile.png"/>
     <img class="hero-photo" src="photo.jpg" alt="Anna Tymoshenko"/>
   </picture>
-
-  <!-- Light sweep -->
-  <div class="hero-light-sweep"></div>
 
   <!-- Bottom gradient -->
   <div class="hero-fade"></div>
@@ -3023,21 +3046,6 @@ footer{padding-left:80px !important;padding-right:80px !important;}
     Offen für neue Projekte
   </div>
 
-  <!-- First name bottom left -->
-  <div class="hero-firstname">Anna<br>Tymoshenko</div>
-
-  <!-- Tagline bottom right -->
-  <div class="hero-tagline">
-    <div class="hero-focus-list">
-      <div class="hfl-item">UX/UI Design</div>
-      <div class="hfl-item">Content Creation</div>
-      <div class="hfl-item">Digital Marketing</div>
-    </div>
-    <div class="hero-tagline-links">
-      <a href="#projects" class="hero-link">Projekte ansehen ↓</a>
-      <a href="#contact" class="hero-link">Contact →</a>
-    </div>
-  </div>
 </section>
 
 <!-- MARQUEE -->
