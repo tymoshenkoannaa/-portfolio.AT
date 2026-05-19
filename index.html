@@ -43,7 +43,7 @@ footer{
   padding-right:var(--container-padding) !important;
 }
 
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;}.nav-mobile-name{display:none;}
 /* GLOBAL PADDING */
 nav,section.cs,.marquee-wrap,footer{
   padding-left:var(--container-padding) !important;
@@ -1620,6 +1620,71 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .fade.in{opacity:1;transform:translateY(0);}
 
 @media screen and (max-width:900px){
+  /* Show Anna Tymoshenko - override desktop hide */
+  .nav-mobile-name{
+    display:block !important;
+    font-family:'Playfair Display',serif !important;
+    font-size:.65rem !important;
+    letter-spacing:.14em !important;
+    text-transform:uppercase !important;
+    color:rgba(255,255,255,0.65) !important;
+    white-space:nowrap !important;
+  }
+
+  /* Show burger - override inline display:none */
+  .mobile-menu-btn{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:5px !important;
+    width:36px !important;
+    height:36px !important;
+    background:none !important;
+    border:none !important;
+    cursor:pointer !important;
+    padding:4px !important;
+  }
+  .mobile-menu-btn span{
+    display:block !important;
+    width:20px !important;
+    height:1.5px !important;
+    background:rgba(255,255,255,0.9) !important;
+  }
+
+  /* Lebenslauf button - visible */
+  .nav-lebenslauf{
+    display:flex !important;
+    align-items:center !important;
+    gap:4px !important;
+    background:transparent !important;
+    border:1px solid rgba(255,255,255,0.25) !important;
+    color:rgba(255,255,255,0.8) !important;
+    padding:6px 12px !important;
+    border-radius:100px !important;
+    font-size:.56rem !important;
+    letter-spacing:.1em !important;
+    text-transform:uppercase !important;
+    cursor:pointer !important;
+    font-family:'Syne',sans-serif !important;
+    white-space:nowrap !important;
+  }
+
+  /* Hide Contact link on mobile */
+  .nav-cta{display:none !important;}
+
+  /* Nav right - flex row */
+  .nav-right{
+    display:flex !important;
+    align-items:center !important;
+    gap:10px !important;
+  }
+
+  /* Hide desktop empty div */
+  nav > div:not(.nav-right){display:none !important;}
+  nav > .nav-mobile-name ~ div:not(.nav-right){display:none !important;}
+
+
   /* 1+2. Header - Anna Tymoshenko left, Lebenslauf + burger right */
   .nav-mobile-name{
     display:block !important;
@@ -2024,7 +2089,7 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
 .nav-links{display:flex;gap:40px;list-style:none;}
 .nav-links a{color:rgba(255,255,255,0.5);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:color .3s;}
 .nav-links a:hover{color:#fff;}
-  .nav-lebenslauf{display:none !important;}
+  
   .nav-cta{display:none !important;}
   .nav-logo{
     display:block !important;
@@ -2327,6 +2392,33 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   /* FLOAT BUTTON */
   .float-cv{bottom:20px !important;right:16px !important;padding:10px 18px !important;font-size:.65rem !important;cursor:pointer !important;}
 }
+
+
+  /* FINAL FIX - force show both elements */
+  .nav-mobile-name{
+    display:block !important;
+    font-family:'Playfair Display',serif !important;
+    font-size:.65rem !important;
+    letter-spacing:.14em !important;
+    text-transform:uppercase !important;
+    color:rgba(255,255,255,0.65) !important;
+  }
+  .nav-lebenslauf{
+    display:flex !important;
+    align-items:center !important;
+    background:transparent !important;
+    border:1px solid rgba(255,255,255,0.25) !important;
+    color:rgba(255,255,255,0.8) !important;
+    padding:6px 12px !important;
+    border-radius:100px !important;
+    font-size:.56rem !important;
+    letter-spacing:.1em !important;
+    text-transform:uppercase !important;
+    cursor:pointer !important;
+    font-family:'Syne',sans-serif !important;
+    white-space:nowrap !important;
+  }
+  .nav-lebenslauf::before{content:'↓ ' !important;}
 
 @media screen and (max-width:480px){
   .hero-name{font-size:clamp(2.2rem,11vw,3.2rem) !important;}
@@ -2684,16 +2776,16 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   <a href="#contact" onclick="closeMobileMenu()">Kontakt</a>
 </div>
 <nav id="mainNav">
-  <div></div>
+  <span class="nav-mobile-name">Anna Tymoshenko</span>
   <ul class="nav-center">
     <li><a href="#about">Über mich</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projekte</a></li>
   </ul>
   <div class="nav-right">
-    <button class="nav-lebenslauf" onclick="openCV()">Lebenslauf</button>
+    <button class="nav-lebenslauf" onclick="openCV()">↓ Lebenslauf</button>
     <a href="#contact" class="nav-cta">Contact</a>
-    <button class="mobile-menu-btn" id="menuBtn" onclick="toggleMobileMenu()" style="display:none;">
+    <button class="mobile-menu-btn" id="menuBtn" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
     </button>
   </div>
