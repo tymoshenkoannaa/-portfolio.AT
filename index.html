@@ -43,7 +43,7 @@ footer{
   padding-right:var(--container-padding) !important;
 }
 
-html{scroll-behavior:smooth;}.nav-mobile-name{display:none !important;}button.nav-lebenslauf{display:none;}
+html{scroll-behavior:smooth;}.nav-mobile-name{display:none !important;}
 /* GLOBAL PADDING */
 nav,section.cs,.marquee-wrap,footer{
   padding-left:var(--container-padding) !important;
@@ -2153,6 +2153,32 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   body.menu-open{overflow:hidden !important;position:fixed !important;width:100% !important;}
 }
 
+
+  /* Hide ALL arrows on mobile */
+  .clink-arr{display:none !important;}
+  .pcard-arrow{display:none !important;}
+  .clink-ico{display:none !important;}
+
+  /* ЕДИНЫЕ ОТСТУПЫ везде */
+  :root{--mob-pad:24px;}
+
+  nav#mainNav{padding-left:var(--mob-pad) !important;padding-right:var(--mob-pad) !important;}
+  section.cs{padding-left:var(--mob-pad) !important;padding-right:var(--mob-pad) !important;padding-top:64px !important;padding-bottom:64px !important;}
+  .marquee-wrap{padding-left:var(--mob-pad) !important;padding-right:var(--mob-pad) !important;}
+  footer{padding-left:var(--mob-pad) !important;padding-right:var(--mob-pad) !important;}
+
+  /* Одинаковые отступы внутри элементов */
+  .pcard-body{padding:var(--mob-pad) !important;}
+  .skill-block{padding:var(--mob-pad) !important;}
+  .approach-box{padding:var(--mob-pad) !important;}
+  .sec-head{margin-bottom:40px !important;}
+  .about-txt p{margin-bottom:20px !important;}
+  .val-item{padding:16px 0 !important;}
+  .exp-item{padding:24px 0 !important;}
+  .clink{padding:18px 0 !important;}
+  .proj-cards{gap:12px !important;}
+  .contact-big{margin-bottom:28px !important;}
+  .contact-sub{margin-bottom:40px !important;}
 @media screen and (max-width:480px){
   section.cs{padding:48px 14px !important;}
   .contact-big{font-size:clamp(1.1rem,5vw,1.5rem) !important;}
