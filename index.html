@@ -2920,10 +2920,10 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
     animation:bgNameReveal 1.4s cubic-bezier(0.22,1,0.36,1) both !important;
   }
 
-  /* Photo — force visible */
+  /* Photo — simple brighten animation */
   .hero-photo{
     opacity:1 !important;
-    animation:none !important;
+    animation:photoBrighten 4s ease forwards !important;
   }
 
   /* Raise marquee on desktop — visual only, layout stays */
@@ -3055,7 +3055,7 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   <!-- Photo full height centered -->
   <picture>
     <source media="(max-width:900px)" srcset="files/photo_mobile.png"/>
-    <img class="hero-photo" src="files/photo_nobg.png" alt="Anna Tymoshenko"/>
+    <img class="hero-photo" src="files/photo.jpg" alt="Anna Tymoshenko"/>
   </picture>
 
   <!-- Bottom gradient -->
