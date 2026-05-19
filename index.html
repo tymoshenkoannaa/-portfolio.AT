@@ -298,6 +298,15 @@ nav{
   0%{filter:brightness(0.12) saturate(0.2);}
   100%{filter:brightness(1) saturate(1);}
 }
+@keyframes bgNameReveal{
+  0%{opacity:0;letter-spacing:.12em;}
+  100%{opacity:1;letter-spacing:.04em;}
+}
+@keyframes photoReveal{
+  0%{opacity:0;filter:brightness(0.1) saturate(0.2);}
+  30%{opacity:0.4;}
+  100%{opacity:1;filter:brightness(1) saturate(1);}
+}
 /* Light sweep */
 .hero-light-sweep{
   position:absolute;
@@ -2905,8 +2914,19 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   /* Hide right tagline on desktop — already in marquee */
   .hero-tagline{display:none !important;}
 
+  /* Show background name on desktop — appears first */
+  .hero-bg-name{
+    display:block !important;
+    animation:bgNameReveal 1.4s cubic-bezier(0.22,1,0.36,1) both !important;
+  }
+
+  /* Photo appears after text — with delay */
+  .hero-photo.photo-brighten{
+    animation:photoReveal 3.5s ease 1s both !important;
+  }
+
   /* Raise marquee on desktop — visual only, layout stays */
-  .marquee-wrap{position:relative !important;top:-120px !important;margin-bottom:-120px !important;z-index:10 !important;}
+  .marquee-wrap{position:relative !important;top:-240px !important;margin-bottom:-240px !important;z-index:10 !important;}
 
   /* Marquee — overlap hero photo */
   .marquee-wrap{
