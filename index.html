@@ -43,6 +43,7 @@ footer{
   padding-right:var(--container-padding) !important;
 }
 
+.mobile-menu-btn{display:none !important;}
 html{scroll-behavior:smooth;}.nav-mobile-name{display:none !important;position:absolute !important;width:0 !important;height:0 !important;overflow:hidden !important;}
 /* GLOBAL PADDING */
 nav,section.cs,.marquee-wrap,footer{
@@ -2947,19 +2948,7 @@ document.addEventListener('keydown', e => {
     closeProto();
   }
 });
-// Show mobile nav elements
-function initMobileNav(){
-  if(window.innerWidth <= 900){
-    var name = document.querySelector('.nav-mobile-name');
-    var lauf = document.querySelector('.nav-lebenslauf');
-    var cta = document.querySelector('.nav-cta');
-    if(name) name.style.display = 'block';
-    if(lauf) lauf.style.cssText = 'display:flex !important;align-items:center;background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.8);padding:6px 12px;border-radius:100px;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:Syne,sans-serif;white-space:nowrap;';
-    if(cta) cta.style.display = 'none';
-  }
-}
-window.addEventListener('DOMContentLoaded', initMobileNav);
-window.addEventListener('resize', initMobileNav);
+// Mobile nav handled by CSS only
 </script>
 </body>
 </html>
