@@ -1920,7 +1920,7 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   .marquee-wrap{
     position:relative !important;
     z-index:10 !important;
-    margin-top:-50px !important;
+    margin-top:-100px !important;
     padding:12px 20px !important;
     background:linear-gradient(to bottom, transparent 0%, #050505 50px) !important;
     border-top:none !important;
@@ -3505,6 +3505,8 @@ function initMobileAnimations(){
   
   elements.forEach((el, i) => {
     if(!el) return;
+    // Skip transform animation on hero-photo to avoid scroll-zoom glitch
+    if(el.classList.contains('hero-photo')) return;
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = `opacity .7s ease ${i*0.15}s, transform .7s ease ${i*0.15}s`;
