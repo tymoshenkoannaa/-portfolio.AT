@@ -3576,22 +3576,30 @@ function initDesktopHeroAnimations(){
 }
 document.addEventListener('DOMContentLoaded', initDesktopHeroAnimations);
 
-// Hide badge and tagline when scrolled past hero
+// Parallax + hide badge and tagline on scroll
 function updateHeroElements(){
   const hero = document.getElementById('hero');
   if(!hero) return;
   const heroBottom = hero.offsetTop + hero.offsetHeight;
   const badge = document.querySelector('.hero-badge');
   const tagline = document.querySelector('.hero-tagline');
-  const scrolled = window.scrollY > heroBottom - 100;
+  const scrollY = window.scrollY;
+  const midpoint = window.innerHeight / 2;
+  const startTop = 110;
+  // move up with scroll but stop at screen midpoint
+  const maxMove = Math.max(0, midpoint - startTop);
+  const moveY = Math.min(scrollY, maxMove);
+  const pastHero = scrollY > heroBottom - 100;
   if(badge){
-    badge.style.opacity = scrolled ? '0' : '';
-    badge.style.pointerEvents = scrolled ? 'none' : '';
+    badge.style.transform = `translateY(-${moveY}px)`;
+    badge.style.opacity = pastHero ? '0' : '1';
+    badge.style.pointerEvents = pastHero ? 'none' : '';
     badge.style.transition = 'opacity 0.4s ease';
   }
   if(tagline){
-    tagline.style.opacity = scrolled ? '0' : '';
-    tagline.style.pointerEvents = scrolled ? 'none' : '';
+    tagline.style.transform = `translateY(-${moveY}px)`;
+    tagline.style.opacity = pastHero ? '0' : '1';
+    tagline.style.pointerEvents = pastHero ? 'none' : '';
     tagline.style.transition = 'opacity 0.4s ease';
   }
 }
