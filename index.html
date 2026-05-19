@@ -278,10 +278,34 @@ nav{
   animation:photoBrighten 4s ease forwards;
 }
 @keyframes photoBrighten{
-  0%{filter:brightness(0.1) saturate(0.3);opacity:0.2;}
-  30%{filter:brightness(0.4) saturate(0.6);opacity:0.5;}
-  65%{filter:brightness(0.8) saturate(0.9);opacity:0.85;}
-  100%{filter:brightness(1) saturate(1);opacity:1;}
+  0%{filter:brightness(0.12) saturate(0.2);}
+  100%{filter:brightness(1) saturate(1);}
+}
+/* Light sweep */
+.hero-light-sweep{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  background:linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 25%,
+    rgba(255,255,255,0.13) 45%,
+    rgba(255,255,255,0.22) 50%,
+    rgba(255,255,255,0.13) 55%,
+    transparent 75%,
+    transparent 100%
+  );
+  transform:translateX(-120%);
+  opacity:0;
+  animation:lightSweep 4s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes lightSweep{
+  0%{transform:translateX(-120%);opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:0.5;}
+  100%{transform:translateX(120%);opacity:0;}
 }
 
 /* Anna name bottom left */
@@ -2987,6 +3011,9 @@ footer{padding-left:80px !important;padding-right:80px !important;}
     <img class="hero-photo" src="photo.jpg" alt="Anna Tymoshenko"/>
   </picture>
 
+  <!-- Light sweep -->
+  <div class="hero-light-sweep"></div>
+
   <!-- Bottom gradient -->
   <div class="hero-fade"></div>
 
@@ -3609,25 +3636,10 @@ function updateHeroElements(){
 window.addEventListener('scroll', updateHeroElements, {passive:true});
 updateHeroElements();
 
-// Restart photo brighten animation when hero comes back into view
+// Start photo brighten on load
 (function(){
   const photo = document.querySelector('.hero-photo');
-  if(!photo) return;
-  let wasVisible = false;
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting && !wasVisible){
-        photo.classList.remove('photo-brighten');
-        void photo.offsetWidth; // force reflow to restart animation
-        photo.classList.add('photo-brighten');
-        wasVisible = true;
-      } else if(!e.isIntersecting){
-        wasVisible = false;
-      }
-    });
-  },{threshold:0.3});
-  obs.observe(document.getElementById('hero'));
-  photo.classList.add('photo-brighten');
+  if(photo) photo.classList.add('photo-brighten');
 })();
 
 function updateNav(){
