@@ -2474,6 +2474,26 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
     content:'— weniger' !important;
   }
 
+
+  /* Custom labels for each card instead of generic "+ mehr" */
+  .pcard:nth-child(1)::after{content:'In Figma öffnen' !important;}
+  .pcard:nth-child(2)::after{content:'App eBehörde öffnen' !important;}
+  .pcard:nth-child(3)::after{content:'Katalog öffnen' !important;}
+  .pcard:nth-child(4)::after{content:'' !important;display:none !important;}
+
+  .pcard:nth-child(1).expanded::after{content:'— schließen' !important;}
+  .pcard:nth-child(2).expanded::after{content:'— schließen' !important;}
+  .pcard:nth-child(3).expanded::after{content:'— schließen' !important;}
+
+
+  /* Card labels */
+  .pcard:nth-child(1)::after{content:'In Figma öffnen' !important;}
+  .pcard:nth-child(2)::after{content:'In Figma öffnen' !important;}
+  .pcard:nth-child(3)::after{content:'Katalog öffnen' !important;}
+  .pcard:nth-child(4)::after{content:'' !important;display:none !important;}
+  .pcard:nth-child(1).expanded::after{content:'— schließen' !important;}
+  .pcard:nth-child(2).expanded::after{content:'— schließen' !important;}
+  .pcard:nth-child(3).expanded::after{content:'— schließen' !important;}
 @media screen and (max-width:480px){
   .hero-name{font-size:clamp(2.2rem,11vw,3.2rem) !important;}
   section.cs{padding:44px 16px !important;}
@@ -3018,7 +3038,7 @@ footer{padding-left:80px !important;padding-right:80px !important;}
     </a>
 
     <!-- 02 -->
-    <a href="https://www.figma.com/proto/FqVhTSdxgUf3ksSzJyIIOC/Capstone-AnnaJulian-Gruppe-5?node-id=40000049-4442&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=40000049%3A4442&page-id=40000049%3A4392" target="_blank" class="pcard">
+    <a href="https://www.figma.com/proto/FqVhTSdxgUf3ksSzJyIIOC/Capstone-AnnaJulian-Gruppe-5?node-id=1962-1700&viewport=-1410%2C290%2C0.24&scaling=contain&content-scaling=responsive&starting-point-node-id=1962%3A1700&page-id=1242%3A15390" target="_blank" class="pcard">
       <div class="pcard-body">
         <div class="pcard-top">
           <div class="pcard-header">
@@ -3244,7 +3264,7 @@ function openProto2(e) {
   const title = document.getElementById('protoModalTitle');
   const newTab = document.getElementById('protoNewTab');
   if(title) title.textContent = "App eBehörde";
-  if(newTab) newTab.href = "https://www.figma.com/proto/FqVhTSdxgUf3ksSzJyIIOC/Capstone-AnnaJulian-Gruppe-5?node-id=40000049-4442&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=40000049%3A4442&page-id=40000049%3A4392";
+  if(newTab) newTab.href = "https://www.figma.com/proto/FqVhTSdxgUf3ksSzJyIIOC/Capstone-AnnaJulian-Gruppe-5?node-id=1962-1700&viewport=-1410%2C290%2C0.24&scaling=contain&content-scaling=responsive&starting-point-node-id=1962%3A1700&page-id=1242%3A15390";
   frame.src = "https://embed.figma.com/proto/FqVhTSdxgUf3ksSzJyIIOC/Capstone-AnnaJulian-Gruppe-5?node-id=40000049-4442&p=f&viewport=-2320%2C-295%2C0.19&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=40000049%3A4442&page-id=40000049%3A4392&embed-host=share";
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
