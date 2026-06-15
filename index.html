@@ -2952,6 +2952,13 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 .contact-big{margin-bottom:24px;}
 .footer-bottom{padding-top:40px;}
 .sec-head .line{margin-left:32px;}
+/* Hero video: desktop vs mobile switch */
+.hero-video-mobile{display:none !important;}
+.hero-video-desktop{display:block !important;}
+@media (max-width:900px){
+  .hero-video-desktop{display:none !important;}
+  .hero-video-mobile{display:block !important;}
+}
 </style>
 </head>
 <body>
@@ -2995,10 +3002,8 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 <!-- HERO -->
 <section class="hero" id="hero">
   <!-- Photo full height centered -->
-  <picture>
-    <source media="(max-width:900px)" srcset="photo_mobile.png"/>
-    <img class="hero-photo" src="photo.gif" alt="Anna Tymoshenko"/>
-  </picture>
+  <video class="hero-photo hero-video-desktop" src="photo.mp4" autoplay muted loop playsinline preload="auto"></video>
+  <video class="hero-photo hero-video-mobile" src="photo_mobile.mp4" autoplay muted loop playsinline preload="auto"></video>
 
   <!-- Bottom gradient -->
   <div class="hero-fade"></div>
