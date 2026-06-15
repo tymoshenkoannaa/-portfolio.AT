@@ -3018,14 +3018,22 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 /* Category detail page (modal) */
 .cat-modal-body{flex:1;min-height:0;overflow-y:auto;padding:56px 32px 90px;-webkit-overflow-scrolling:touch;}
 .cat-modal-inner{max-width:1080px;margin:0 auto;}
+body.cat-open{overflow:hidden;}
 @media (max-width:900px){
   .cat-cards{grid-template-columns:1fr;gap:12px;}
   .cat-card{aspect-ratio:16/10;}
   .cat-card-title{font-size:1.3rem;}
-  /* Mobile: whole category page scrolls like a normal document */
-  .proto-modal.cat-modal{display:block;height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
-  .proto-modal.cat-modal .proto-modal-nav{position:sticky;top:0;z-index:10;}
-  .cat-modal-body{padding:32px 16px 60px;flex:none;min-height:0;height:auto;overflow:visible;}
+  /* Mobile: category page uses the NATIVE window scroll (most reliable on iOS).
+     The main page is hidden while a category is open, and the category flows
+     in normal document order so the whole window scrolls. */
+  body.cat-open{overflow:visible !important;height:auto !important;position:static !important;}
+  body.cat-open #mainNav,
+  body.cat-open section,
+  body.cat-open footer{display:none !important;}
+  .proto-modal.cat-modal{display:none;}
+  .proto-modal.cat-modal.open{display:block;position:static;height:auto;min-height:100vh;max-height:none;overflow:visible;opacity:1;}
+  .proto-modal.cat-modal.open .proto-modal-nav{position:fixed;top:0;left:0;right:0;z-index:1001;}
+  .cat-modal-body{padding:84px 16px 70px;flex:none;min-height:0;height:auto;overflow:visible;}
 }
 /* ===== FLYER GALLERY ===== */
 .flyer-intro{text-align:center;margin-bottom:40px;}
@@ -3694,35 +3702,20 @@ function closeVideo() {
   setTimeout(() => { frame.src = ''; }, 400);
 }
 
-// iOS-safe body scroll lock (prevents touch hijacking inside fixed modals)
-let _scrollLockY = 0;
-function lockBodyScroll() {
-  _scrollLockY = window.scrollY || window.pageYOffset || 0;
-  document.body.style.position = 'fixed';
-  document.body.style.top = (-_scrollLockY) + 'px';
-  document.body.style.left = '0';
-  document.body.style.right = '0';
-  document.body.style.width = '100%';
-  document.body.style.overflow = 'hidden';
-}
-function unlockBodyScroll() {
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.left = '';
-  document.body.style.right = '';
-  document.body.style.width = '';
-  document.body.style.overflow = '';
-  window.scrollTo(0, _scrollLockY);
-}
-
 // CATEGORY MODALS
+// On mobile the category page uses the native window scroll: the main page is
+// hidden (via body.cat-open) and the category flows in normal document order.
+// On desktop it remains a fixed overlay that scrolls internally.
+let _catScrollY = 0;
 function openCategory(e, id) {
   e.preventDefault();
   const modal = document.getElementById(id);
   if(!modal) return;
+  _catScrollY = window.scrollY || window.pageYOffset || 0;
+  document.body.classList.add('cat-open');
   modal.classList.add('open');
-  lockBodyScroll();
-  // reset scroll on whichever element actually scrolls (modal itself on mobile, body on desktop)
+  // start the category page at the top
+  window.scrollTo(0, 0);
   modal.scrollTop = 0;
   const body = modal.querySelector('.cat-modal-body');
   if(body) body.scrollTop = 0;
@@ -3731,7 +3724,9 @@ function closeCategory(id) {
   const modal = document.getElementById(id);
   if(!modal) return;
   modal.classList.remove('open');
-  unlockBodyScroll();
+  document.body.classList.remove('cat-open');
+  // return to where the user was on the main page, no jump
+  window.scrollTo(0, _catScrollY);
 }
 
 // FLYER LIGHTBOX
