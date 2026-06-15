@@ -3023,7 +3023,7 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   .cat-card{aspect-ratio:16/10;}
   .cat-card-title{font-size:1.3rem;}
   /* Mobile: whole category page scrolls like a normal document */
-  .proto-modal.cat-modal{display:block;height:100dvh;max-height:100dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
+  .proto-modal.cat-modal{display:block;height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
   .proto-modal.cat-modal .proto-modal-nav{position:sticky;top:0;z-index:10;}
   .cat-modal-body{padding:32px 16px 60px;flex:none;min-height:0;height:auto;overflow:visible;}
 }
@@ -3694,20 +3694,44 @@ function closeVideo() {
   setTimeout(() => { frame.src = ''; }, 400);
 }
 
+// iOS-safe body scroll lock (prevents touch hijacking inside fixed modals)
+let _scrollLockY = 0;
+function lockBodyScroll() {
+  _scrollLockY = window.scrollY || window.pageYOffset || 0;
+  document.body.style.position = 'fixed';
+  document.body.style.top = (-_scrollLockY) + 'px';
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+  document.body.style.overflow = 'hidden';
+}
+function unlockBodyScroll() {
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.width = '';
+  document.body.style.overflow = '';
+  window.scrollTo(0, _scrollLockY);
+}
+
 // CATEGORY MODALS
 function openCategory(e, id) {
   e.preventDefault();
   const modal = document.getElementById(id);
   if(!modal) return;
   modal.classList.add('open');
-  modal.querySelector('.cat-modal-body').scrollTop = 0;
-  document.body.style.overflow = 'hidden';
+  lockBodyScroll();
+  // reset scroll on whichever element actually scrolls (modal itself on mobile, body on desktop)
+  modal.scrollTop = 0;
+  const body = modal.querySelector('.cat-modal-body');
+  if(body) body.scrollTop = 0;
 }
 function closeCategory(id) {
   const modal = document.getElementById(id);
   if(!modal) return;
   modal.classList.remove('open');
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 }
 
 // FLYER LIGHTBOX
