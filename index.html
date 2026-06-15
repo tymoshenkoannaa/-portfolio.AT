@@ -3714,8 +3714,8 @@ function openCategory(e, id) {
   _catScrollY = window.scrollY || window.pageYOffset || 0;
   document.body.classList.add('cat-open');
   modal.classList.add('open');
-  // start the category page at the top
-  window.scrollTo(0, 0);
+  // start the category page at the top (instant, no smooth-scroll animation)
+  window.scrollTo({top:0, left:0, behavior:'instant'});
   modal.scrollTop = 0;
   const body = modal.querySelector('.cat-modal-body');
   if(body) body.scrollTop = 0;
@@ -3725,8 +3725,8 @@ function closeCategory(id) {
   if(!modal) return;
   modal.classList.remove('open');
   document.body.classList.remove('cat-open');
-  // return to where the user was on the main page, no jump
-  window.scrollTo(0, _catScrollY);
+  // return to where the user was on the main page, instantly (no smooth-scroll animation)
+  window.scrollTo({top:_catScrollY, left:0, behavior:'instant'});
 }
 
 // FLYER LIGHTBOX
