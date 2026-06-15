@@ -3018,6 +3018,8 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 /* Category detail page (modal) */
 .cat-modal-body{flex:1;min-height:0;overflow-y:auto;padding:56px 32px 90px;-webkit-overflow-scrolling:touch;}
 .cat-modal-inner{max-width:1080px;margin:0 auto;}
+/* category page opens/closes instantly, like a window — no fade */
+.proto-modal.cat-modal{transition:none !important;}
 body.cat-open{overflow:hidden;}
 @media (max-width:900px){
   .cat-cards{grid-template-columns:1fr;gap:12px;}
