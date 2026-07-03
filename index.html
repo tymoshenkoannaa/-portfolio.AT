@@ -296,13 +296,19 @@ nav{
 }
 /* Light sweep */
 
-/* Grey wordmark letters animate in one by one */
+/* Grey wordmark letters animate in a looping wave */
 .hero-bg-name span{
   display:inline-block;
-  opacity:0;transform:translateY(40px);
-  animation:heroName .9s cubic-bezier(.2,.7,.2,1) forwards;
+  opacity:0;
+  animation:heroName 4.6s cubic-bezier(.2,.7,.2,1) infinite;
 }
-@keyframes heroName{to{opacity:1;transform:translateY(0);}}
+@keyframes heroName{
+  0%   {opacity:0;transform:translateY(45px);}
+  16%  {opacity:1;transform:translateY(0);}
+  74%  {opacity:1;transform:translateY(0);}
+  90%  {opacity:0;transform:translateY(-45px);}
+  100% {opacity:0;transform:translateY(45px);}
+}
 
 /* Desktop foreground photo — black bg blends away via lighten */
 .hero-shot{
@@ -437,6 +443,14 @@ section.cs{padding-top:140px;padding-bottom:140px;width:100%;box-sizing:border-b
 .skill-h{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:28px;}
 .skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
 .stag{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--border);color:var(--gray2);}
+.stag-logo{display:inline-flex;align-items:center;gap:7px;padding-left:10px;}
+.tlogo{
+  width:14px;height:14px;flex:none;
+  background:rgba(255,255,255,0.9);
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center;
+  -webkit-mask-size:contain;mask-size:contain;
+}
 
 .proj-list{display:flex;flex-direction:column;}
 .proj-row{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:48px;padding:40px 0;border-bottom:1px solid var(--border);text-decoration:none;color:#fff;transition:padding-left .4s;background:rgba(5,5,5,0.88);backdrop-filter:blur(12px);}
@@ -2017,9 +2031,8 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   .footer-name{display:none !important;}
   .footer-bottom{flex-direction:column !important;gap:8px !important;text-align:center !important;}
 
-  /* PLANET */
-  .planet-wrap{display:block !important;position:fixed !important;inset:0 !important;width:100% !important;height:100% !important;border-radius:0 !important;z-index:5 !important;}
-  .planet-video{width:100% !important;height:100% !important;object-fit:cover !important;filter:brightness(0.15) !important;}
+  /* PLANET — на мобильном не нужна (просто чёрный экран) */
+  .planet-wrap{display:none !important;}
 
   /* MOBILE MENU */
   .mobile-menu{
@@ -2298,24 +2311,8 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
     gap:24px !important;
   }
 
-  /* PLANET — видна со второго экрана */
-  .planet-wrap{
-    display:block !important;
-    position:fixed !important;
-    inset:0 !important;
-    width:100% !important;
-    height:100% !important;
-    border-radius:0 !important;
-    box-shadow:none !important;
-    z-index:5 !important;
-  }
-  .planet-video{
-    width:100% !important;
-    height:100% !important;
-    object-fit:cover !important;
-    border-radius:0 !important;
-    filter:brightness(0.2) saturate(0.8) !important;
-  }
+  /* PLANET — на мобильном скрыта полностью */
+  .planet-wrap{display:none !important;}
 
   /* ABOUT */
   .about-grid{grid-template-columns:1fr !important;gap:32px !important;}
@@ -3168,7 +3165,7 @@ body.cat-open{overflow:hidden;}
 <!-- HERO -->
 <section class="hero" id="hero">
   <!-- DESKTOP: grey animated wordmark BEHIND -->
-  <div class="hero-bg-name" aria-hidden="true"><span style="animation-delay:.05s">P</span><span style="animation-delay:.11s">O</span><span style="animation-delay:.17s">R</span><span style="animation-delay:.23s">T</span><span style="animation-delay:.29s">F</span><span style="animation-delay:.35s">O</span><span style="animation-delay:.41s">L</span><span style="animation-delay:.47s">I</span><span style="animation-delay:.53s">O</span></div>
+  <div class="hero-bg-name" aria-hidden="true"><span style="animation-delay:0s">P</span><span style="animation-delay:.13s">O</span><span style="animation-delay:.26s">R</span><span style="animation-delay:.39s">T</span><span style="animation-delay:.52s">F</span><span style="animation-delay:.65s">O</span><span style="animation-delay:.78s">L</span><span style="animation-delay:.91s">I</span><span style="animation-delay:1.04s">O</span></div>
   <!-- DESKTOP: cut-out photo in FRONT (text sits truly behind) -->
   <img class="hero-shot" src="hero.png" alt="Anna Tymoshenko" />
   <!-- MOBILE: keep video -->
@@ -3248,8 +3245,8 @@ body.cat-open{overflow:hidden;}
       <span class="skill-icon">◈</span>
       <div class="skill-h">UX/UI Design</div>
       <div class="skill-tags">
-        <span class="stag">Figma</span>
-        <span class="stag">FigJam</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/figma.svg');mask-image:url('logos/figma.svg')"></i>Figma</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/figma.svg');mask-image:url('logos/figma.svg')"></i>FigJam</span>
         <span class="stag">User Research</span>
         <span class="stag">User Personas</span>
         <span class="stag">User Journeys</span>
@@ -3265,10 +3262,12 @@ body.cat-open{overflow:hidden;}
       <span class="skill-icon">◉</span>
       <div class="skill-h">Content & Marketing</div>
       <div class="skill-tags">
-        <span class="stag">Canva</span>
-        <span class="stag">CapCut</span>
-        <span class="stag">Adobe Illustrator</span>
-        <span class="stag">Social Media</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/canva.svg');mask-image:url('logos/canva.svg')"></i>Canva</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/capcut.svg');mask-image:url('logos/capcut.svg')"></i>CapCut</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/illustrator.svg');mask-image:url('logos/illustrator.svg')"></i>Adobe Illustrator</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/instagram.svg');mask-image:url('logos/instagram.svg')"></i>Instagram</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/tiktok.svg');mask-image:url('logos/tiktok.svg')"></i>TikTok</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/linkedin.svg');mask-image:url('logos/linkedin.svg')"></i>LinkedIn</span>
         <span class="stag">Videocontent</span>
         <span class="stag">Foto & Shooting</span>
         <span class="stag">Newsletter</span>
@@ -3281,10 +3280,10 @@ body.cat-open{overflow:hidden;}
       <span class="skill-icon">◊</span>
       <div class="skill-h">KI & Innovation</div>
       <div class="skill-tags">
-        <span class="stag">ChatGPT</span>
-        <span class="stag">Claude AI</span>
-        <span class="stag">Gemini</span>
-        <span class="stag">Midjourney</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/chatgpt.svg');mask-image:url('logos/chatgpt.svg')"></i>ChatGPT</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/claude.svg');mask-image:url('logos/claude.svg')"></i>Claude AI</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/gemini.svg');mask-image:url('logos/gemini.svg')"></i>Gemini</span>
+        <span class="stag stag-logo"><i class="tlogo" style="-webkit-mask-image:url('logos/midjourney.svg');mask-image:url('logos/midjourney.svg')"></i>Midjourney</span>
         <span class="stag">Kling</span>
         <span class="stag">Prompt Design</span>
         
@@ -3428,26 +3427,42 @@ const planetWrap=document.getElementById('planetWrap');
 const planetVideo=document.getElementById('planetVideo');
 const hero=document.getElementById('hero');
 const contact=document.getElementById('contact');
-let rotation=0,lastScroll=window.scrollY;
+const planetStart=document.getElementById('about'); // second section
+let rotation=0,lastScroll=window.scrollY,planetOff=false;
+const isMobilePlanet=()=>window.innerWidth<=900;
+
+// On mobile the planet is not needed (black screen) — unload it so it never decodes
+function planetMobileGuard(){
+  if(isMobilePlanet()){
+    planetWrap.classList.remove('visible');
+    try{planetVideo.pause();}catch(e){}
+    if(!planetOff){ planetVideo.innerHTML=''; planetVideo.removeAttribute('src'); planetVideo.load(); planetOff=true; }
+    return true;
+  }
+  return false;
+}
 
 function update(){
+  if(planetMobileGuard()) return;
   const sy=window.scrollY;
-  const hBot=hero.offsetTop+hero.offsetHeight;
+  const startY=planetStart.offsetTop; // begin at the SECOND section
   const cTop=contact.offsetTop;
-  const inRange=sy>hBot-100&&sy<cTop-window.innerHeight*0.4;
+  const inRange=sy>startY&&sy<cTop-window.innerHeight*0.4;
   planetWrap.classList.toggle('visible',inRange);
   const delta=sy-lastScroll;
   rotation+=delta*0.06;
   lastScroll=sy;
   planetVideo.style.transform=`rotate(${rotation}deg)`;
-  if(planetVideo.duration&&sy>hBot){
-    const prog=Math.min(1,Math.max(0,(sy-hBot)/(cTop-hBot)));
+  if(planetVideo.duration&&sy>startY){
+    const prog=Math.min(1,Math.max(0,(sy-startY)/(cTop-startY)));
     planetVideo.currentTime=prog*planetVideo.duration;
   }
 }
 
 window.addEventListener('scroll',update,{passive:true});
+window.addEventListener('resize',update,{passive:true});
 planetVideo.addEventListener('loadeddata',()=>{planetVideo.pause();update();});
+planetMobileGuard();
 update();
 
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
