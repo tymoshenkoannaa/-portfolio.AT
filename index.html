@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 <title>Anna Tymoshenko — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 :root{--black:#050505;--border:rgba(255,255,255,0.08);--gray:#666;--gray2:#999;--white:#fff;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -267,11 +267,11 @@ nav{
   z-index:1;
   display:flex;justify-content:center;align-items:center;
   width:100%;
-  font-family:'Inter',system-ui,sans-serif;
-  font-weight:800;
-  font-size:19vw;
+  font-family:'Bebas Neue',sans-serif;
+  font-weight:400;
+  font-size:393px;
   line-height:1;
-  letter-spacing:-.02em;
+  letter-spacing:.02em;
   text-transform:uppercase;
   color:#2b2b2b;
   white-space:nowrap;
@@ -312,7 +312,6 @@ nav{
   height:100%;width:auto;max-width:none;
   object-fit:contain;object-position:center bottom;
   z-index:3;
-  mix-blend-mode:lighten;
   animation:photoBrighten 2.6s ease forwards;
 }
 @media (max-width:900px){
@@ -3170,8 +3169,8 @@ body.cat-open{overflow:hidden;}
 <section class="hero" id="hero">
   <!-- DESKTOP: grey animated wordmark BEHIND -->
   <div class="hero-bg-name" aria-hidden="true"><span style="animation-delay:.05s">P</span><span style="animation-delay:.11s">O</span><span style="animation-delay:.17s">R</span><span style="animation-delay:.23s">T</span><span style="animation-delay:.29s">F</span><span style="animation-delay:.35s">O</span><span style="animation-delay:.41s">L</span><span style="animation-delay:.47s">I</span><span style="animation-delay:.53s">O</span></div>
-  <!-- DESKTOP: photo in FRONT (black bg blends away) -->
-  <img class="hero-shot" src="hero.jpg" alt="Anna Tymoshenko" />
+  <!-- DESKTOP: cut-out photo in FRONT (text sits truly behind) -->
+  <img class="hero-shot" src="hero.png" alt="Anna Tymoshenko" />
   <!-- MOBILE: keep video -->
   <video class="hero-photo hero-video-mobile" data-src="photo_mobile.mp4" muted loop playsinline preload="none"></video>
   <script>
