@@ -3131,8 +3131,26 @@ body.cat-open{overflow:hidden;}
 <!-- HERO -->
 <section class="hero" id="hero">
   <!-- Photo full height centered -->
-  <video class="hero-photo hero-video-desktop" src="photo.mp4" autoplay muted loop playsinline preload="auto"></video>
-  <video class="hero-photo hero-video-mobile" src="photo_mobile.mp4" autoplay muted loop playsinline preload="auto"></video>
+  <video class="hero-photo hero-video-desktop" data-src="photo.mp4" muted loop playsinline preload="none"></video>
+  <video class="hero-photo hero-video-mobile" data-src="photo_mobile.mp4" muted loop playsinline preload="none"></video>
+  <script>
+  (function(){
+    var mq = window.matchMedia('(max-width:900px)');
+    var d = document.querySelector('.hero-video-desktop');
+    var m = document.querySelector('.hero-video-mobile');
+    function applyHero(){
+      var mobile = mq.matches;
+      var active = mobile ? m : d;
+      var inactive = mobile ? d : m;
+      // stop & unload the video that is not visible so it doesn't decode in the background
+      if(inactive){ try{ inactive.pause(); }catch(e){} if(inactive.getAttribute('src')){ inactive.removeAttribute('src'); inactive.load(); } }
+      // load & play only the active one
+      if(active){ if(!active.getAttribute('src')){ active.setAttribute('src', active.getAttribute('data-src')); } active.play().catch(function(){}); }
+    }
+    applyHero();
+    if(mq.addEventListener){ mq.addEventListener('change', applyHero); } else if(mq.addListener){ mq.addListener(applyHero); }
+  })();
+  </script>
 
   <!-- Bottom gradient -->
   <div class="hero-fade"></div>
