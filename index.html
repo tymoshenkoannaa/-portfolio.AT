@@ -261,7 +261,22 @@ nav{
 }
 
 /* Big background name — behind photo */
-.hero-bg-name{display:none !important;}
+.hero-bg-name{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  z-index:1;
+  display:flex;justify-content:center;align-items:center;
+  width:100%;
+  font-family:'Inter',system-ui,sans-serif;
+  font-weight:800;
+  font-size:19vw;
+  line-height:1;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  color:#2b2b2b;
+  white-space:nowrap;
+  pointer-events:none;user-select:none;
+}
 
 /* Photo centered, full height */
 .hero-photo{
@@ -280,6 +295,29 @@ nav{
   100%{filter:brightness(1) saturate(1);}
 }
 /* Light sweep */
+
+/* Grey wordmark letters animate in one by one */
+.hero-bg-name span{
+  display:inline-block;
+  opacity:0;transform:translateY(40px);
+  animation:heroName .9s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes heroName{to{opacity:1;transform:translateY(0);}}
+
+/* Desktop foreground photo — black bg blends away via lighten */
+.hero-shot{
+  position:absolute;
+  bottom:0;left:50%;
+  transform:translateX(-50%);
+  height:100%;width:auto;max-width:none;
+  object-fit:contain;object-position:center bottom;
+  z-index:3;
+  mix-blend-mode:lighten;
+  animation:photoBrighten 2.6s ease forwards;
+}
+@media (max-width:900px){
+  .hero-shot{display:none !important;}
+}
 
 /* Anna name bottom left */
 .hero-firstname{
@@ -2779,7 +2817,7 @@ footer{padding-top:80px;padding-bottom:56px;border-top:none;position:relative;z-
   nav#mainNav .mobile-menu-btn{display:none !important;}
   .marquee-wrap{position:relative !important;top:-120px !important;margin-bottom:-120px !important;z-index:10 !important;}
   .hero-tagline{display:none !important;}
-  .hero-bg-name{display:none !important;}
+  .hero-bg-name{display:flex !important;}
   .hero-photo{opacity:1 !important;}
 }
 
@@ -3130,22 +3168,20 @@ body.cat-open{overflow:hidden;}
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <!-- Photo full height centered -->
-  <video class="hero-photo hero-video-desktop" data-src="photo.mp4" muted loop playsinline preload="none"></video>
+  <!-- DESKTOP: grey animated wordmark BEHIND -->
+  <div class="hero-bg-name" aria-hidden="true"><span style="animation-delay:.05s">P</span><span style="animation-delay:.11s">O</span><span style="animation-delay:.17s">R</span><span style="animation-delay:.23s">T</span><span style="animation-delay:.29s">F</span><span style="animation-delay:.35s">O</span><span style="animation-delay:.41s">L</span><span style="animation-delay:.47s">I</span><span style="animation-delay:.53s">O</span></div>
+  <!-- DESKTOP: photo in FRONT (black bg blends away) -->
+  <img class="hero-shot" src="hero.jpg" alt="Anna Tymoshenko" />
+  <!-- MOBILE: keep video -->
   <video class="hero-photo hero-video-mobile" data-src="photo_mobile.mp4" muted loop playsinline preload="none"></video>
   <script>
   (function(){
     var mq = window.matchMedia('(max-width:900px)');
-    var d = document.querySelector('.hero-video-desktop');
     var m = document.querySelector('.hero-video-mobile');
     function applyHero(){
-      var mobile = mq.matches;
-      var active = mobile ? m : d;
-      var inactive = mobile ? d : m;
-      // stop & unload the video that is not visible so it doesn't decode in the background
-      if(inactive){ try{ inactive.pause(); }catch(e){} if(inactive.getAttribute('src')){ inactive.removeAttribute('src'); inactive.load(); } }
-      // load & play only the active one
-      if(active){ if(!active.getAttribute('src')){ active.setAttribute('src', active.getAttribute('data-src')); } active.play().catch(function(){}); }
+      if(!m) return;
+      if(mq.matches){ if(!m.getAttribute('src')){ m.setAttribute('src', m.getAttribute('data-src')); } m.play().catch(function(){}); }
+      else { try{ m.pause(); }catch(e){} if(m.getAttribute('src')){ m.removeAttribute('src'); m.load(); } }
     }
     applyHero();
     if(mq.addEventListener){ mq.addEventListener('change', applyHero); } else if(mq.addListener){ mq.addListener(applyHero); }
