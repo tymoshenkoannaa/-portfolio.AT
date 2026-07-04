@@ -3472,7 +3472,15 @@ const hero=document.getElementById('hero');
 const contact=document.getElementById('contact');
 const planetStart=document.getElementById('about'); // second section
 let rotation=0,lastScroll=window.scrollY,planetOff=false;
+let startY=0,cTop=0,winH=window.innerHeight,ticking=false;
 const isMobilePlanet=()=>window.innerWidth<=900;
+
+// Cache section offsets so we DON'T read layout (offsetTop) on every scroll event
+function measurePlanet(){
+  startY=planetStart.offsetTop; // second section
+  cTop=contact.offsetTop;
+  winH=window.innerHeight;
+}
 
 // On mobile the planet is not needed (black screen) — unload it so it never decodes
 function planetMobileGuard(){
@@ -3485,28 +3493,34 @@ function planetMobileGuard(){
   return false;
 }
 
-function update(){
+// Runs at most once per animation frame — keeps scrolling smooth
+function renderPlanet(){
+  ticking=false;
   if(planetMobileGuard()) return;
   const sy=window.scrollY;
-  const startY=planetStart.offsetTop; // begin at the SECOND section
-  const cTop=contact.offsetTop;
-  const inRange=sy>startY&&sy<cTop-window.innerHeight*0.4;
+  const inRange=sy>startY&&sy<cTop-winH*0.4;
   planetWrap.classList.toggle('visible',inRange);
-  // keep the video playing smoothly on its own; only pause it when out of range
+  // video plays on its own; only pause when out of range
   if(inRange){ if(planetVideo.paused){ planetVideo.play().catch(function(){}); } }
   else { try{ planetVideo.pause(); }catch(e){} }
-  // scroll only drives the rotation — no frame scrubbing (that caused the jank)
+  // scroll only drives the rotation — no frame scrubbing
   const delta=sy-lastScroll;
   rotation+=delta*0.06;
   lastScroll=sy;
   planetVideo.style.transform=`rotate(${rotation}deg)`;
 }
 
-window.addEventListener('scroll',update,{passive:true});
-window.addEventListener('resize',update,{passive:true});
-planetVideo.addEventListener('loadeddata',()=>{update();});
+function onPlanetScroll(){
+  if(!ticking){ ticking=true; requestAnimationFrame(renderPlanet); }
+}
+
+window.addEventListener('scroll',onPlanetScroll,{passive:true});
+window.addEventListener('resize',()=>{measurePlanet();onPlanetScroll();},{passive:true});
+window.addEventListener('load',()=>{measurePlanet();renderPlanet();});
+planetVideo.addEventListener('loadeddata',()=>{measurePlanet();renderPlanet();});
+measurePlanet();
 planetMobileGuard();
-update();
+renderPlanet();
 
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
 document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
@@ -3999,18 +4013,18 @@ function openCV() {
 
 // FLOATING CV BUTTON - show after scrolling past hero
 const floatCV = document.getElementById('floatCV');
+// --- cached layout metrics (read once, refreshed on resize/load) so scroll never triggers reflow ---
+const _heroEl = document.getElementById('hero');
+let _heroBottom = 0;
+function measureHero(){ if(_heroEl){ _heroBottom = _heroEl.offsetTop + _heroEl.offsetHeight; } }
 function updateFloatCV(){
-  const hero = document.getElementById('hero');
-  if(!hero) return;
-  const heroBottom = hero.offsetTop + hero.offsetHeight;
-  if(window.scrollY > heroBottom * 0.5){
+  if(!_heroEl) return;
+  if(window.scrollY > _heroBottom * 0.5){
     floatCV.classList.add('visible');
   } else {
     floatCV.classList.remove('visible');
   }
 }
-window.addEventListener('scroll', updateFloatCV, {passive:true});
-updateFloatCV();
 
 // MOBILE MENU
 function toggleMobileMenu(){
@@ -4147,35 +4161,31 @@ function initDesktopHeroAnimations(){
 }
 document.addEventListener('DOMContentLoaded', initDesktopHeroAnimations);
 
-// Parallax + hide badge and tagline on scroll
+// Parallax + hide badge and tagline on scroll (DOM refs + metrics cached above)
+const _heroBadge = document.querySelector('.hero-badge');
+const _heroTagline = document.querySelector('.hero-tagline');
+if(_heroBadge) _heroBadge.style.transition = 'opacity 0.4s ease';
+if(_heroTagline) _heroTagline.style.transition = 'opacity 0.4s ease';
+let _heroMid = window.innerHeight / 2;
 function updateHeroElements(){
-  const hero = document.getElementById('hero');
-  if(!hero) return;
-  const heroBottom = hero.offsetTop + hero.offsetHeight;
-  const badge = document.querySelector('.hero-badge');
-  const tagline = document.querySelector('.hero-tagline');
+  if(!_heroEl) return;
   const scrollY = window.scrollY;
-  const midpoint = window.innerHeight / 2;
   const startTop = 110;
   // move up with scroll but stop at screen midpoint
-  const maxMove = Math.max(0, midpoint - startTop);
+  const maxMove = Math.max(0, _heroMid - startTop);
   const moveY = Math.min(scrollY, maxMove);
-  const pastHero = scrollY > heroBottom - 100;
-  if(badge){
-    badge.style.transform = `translateY(-${moveY}px)`;
-    badge.style.opacity = pastHero ? '0' : '1';
-    badge.style.pointerEvents = pastHero ? 'none' : '';
-    badge.style.transition = 'opacity 0.4s ease';
+  const pastHero = scrollY > _heroBottom - 100;
+  if(_heroBadge){
+    _heroBadge.style.transform = `translateY(-${moveY}px)`;
+    _heroBadge.style.opacity = pastHero ? '0' : '1';
+    _heroBadge.style.pointerEvents = pastHero ? 'none' : '';
   }
-  if(tagline){
-    tagline.style.transform = `translateY(-${moveY}px)`;
-    tagline.style.opacity = pastHero ? '0' : '1';
-    tagline.style.pointerEvents = pastHero ? 'none' : '';
-    tagline.style.transition = 'opacity 0.4s ease';
+  if(_heroTagline){
+    _heroTagline.style.transform = `translateY(-${moveY}px)`;
+    _heroTagline.style.opacity = pastHero ? '0' : '1';
+    _heroTagline.style.pointerEvents = pastHero ? 'none' : '';
   }
 }
-window.addEventListener('scroll', updateHeroElements, {passive:true});
-updateHeroElements();
 
 // Start photo brighten on load
 (function(){
@@ -4183,25 +4193,35 @@ updateHeroElements();
   if(photo) photo.classList.add('photo-brighten');
 })();
 
+const _menuBtn = document.getElementById('menuBtn');
+const _mainNav = document.getElementById('mainNav');
 function updateNav(){
-  const btn = document.getElementById('menuBtn');
-  const nav = document.getElementById('mainNav');
   if(window.innerWidth <= 900){
-    btn.style.display='flex';
-    // Scroll effect on nav
-    if(window.scrollY > 50){
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
+    _menuBtn.style.display='flex';
+    if(window.scrollY > 50){ _mainNav.classList.add('scrolled'); }
+    else { _mainNav.classList.remove('scrolled'); }
   } else {
-    btn.style.display='none';
-    nav.classList.remove('scrolled');
+    _menuBtn.style.display='none';
+    _mainNav.classList.remove('scrolled');
   }
 }
-window.addEventListener('resize', updateNav);
-window.addEventListener('scroll', updateNav, {passive:true});
-updateNav();
+
+// --- single rAF-throttled scroll dispatcher: all handlers run at most once per frame ---
+let _scrollTick = false;
+function _onScrollAll(){
+  _scrollTick = false;
+  updateFloatCV();
+  updateHeroElements();
+  updateNav();
+}
+window.addEventListener('scroll', () => {
+  if(!_scrollTick){ _scrollTick = true; requestAnimationFrame(_onScrollAll); }
+}, {passive:true});
+function _onResizeAll(){ measureHero(); _heroMid = window.innerHeight / 2; _onScrollAll(); }
+window.addEventListener('resize', _onResizeAll, {passive:true});
+window.addEventListener('load', _onResizeAll);
+measureHero();
+_onScrollAll();
 
 function closeCV() {
   document.getElementById('cvModal').classList.remove('open');
