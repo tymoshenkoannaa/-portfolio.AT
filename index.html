@@ -3026,10 +3026,12 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   .hero-video-desktop{display:none !important;}
   .hero-video-mobile{display:none !important;}
   .hero{background:#050505 !important;overflow:hidden !important;}
-  /* grey animated PORTFOLIO behind, on black */
+  /* grey animated PORTFOLIO behind, on black — full word, raised above head */
   .hero-bg-name{
     display:flex !important;
-    font-size:145px !important;
+    font-size:clamp(70px,26vw,145px) !important;
+    top:40% !important;
+    transform:translate(-50%,-50%) !important;
     z-index:1 !important;
   }
   /* desktop cutout hidden, mobile cutout in front */
@@ -3379,7 +3381,7 @@ body.cat-open{overflow:hidden;}
       <div class="cat-card-overlay">
         <div class="cat-card-top">
           <span class="cat-card-num">03</span>
-          <span class="cat-card-count">2 Projekte</span>
+          <span class="cat-card-count">3 Projekte</span>
         </div>
         <div class="cat-card-bottom">
           <h3 class="cat-card-title">Video &amp; Motion</h3>
@@ -3686,11 +3688,42 @@ document.querySelectorAll('.val-item').forEach(el=>valObs.observe(el));
     <div class="cat-modal-inner">
       <div class="proj-cards">
 
-        <a href="#" onclick="openVideo(event)" class="pcard">
+        <a href="#" onclick="openLocalVideo(event,'dental.mp4')" class="pcard">
           <div class="pcard-body">
             <div class="pcard-top">
               <div class="pcard-header">
                 <span class="pcard-num">01</span>
+                <span class="pcard-name">Zahnarztpraxis</span>
+              </div>
+              <div class="pcard-sub">Social Media · Videocontent</div>
+              <div class="pcard-desc">Social-Media-Video für eine Zahnarztpraxis — von der ersten Idee über den Dreh bis zum fertigen Schnitt.</div>
+              <div class="pcard-tasks">
+                <div class="pcard-task">— Konzept & Planung des Videos</div>
+                <div class="pcard-task">— Dreh vor Ort in der Praxis</div>
+                <div class="pcard-task">— Videoschnitt & Bearbeitung in CapCut</div>
+              </div>
+            </div>
+            <div class="pcard-footer">
+              <div class="pcard-badges">
+                <span class="pcard-badge">Social Media</span>
+                <span class="pcard-badge">Video</span>
+                <span class="pcard-badge">Editing</span>
+                <span class="pcard-badge">CapCut</span>
+              </div>
+              <span class="pcard-arrow">▶</span>
+            </div>
+          </div>
+          <div class="pcard-img">
+            <img src="zahnarzt_cover.jpg" alt="Zahnarztpraxis" style="object-fit:cover;"/>
+            <div class="pcard-hint">▶ Video abspielen</div>
+          </div>
+        </a>
+
+        <a href="#" onclick="openVideo(event)" class="pcard">
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <div class="pcard-header">
+                <span class="pcard-num">02</span>
                 <span class="pcard-name">Videoproduktion</span>
               </div>
               <div class="pcard-sub">Corporate Video · Imagefilm</div>
@@ -3712,7 +3745,7 @@ document.querySelectorAll('.val-item').forEach(el=>valObs.observe(el));
             </div>
           </div>
           <div class="pcard-img">
-            <img src="video.png" alt="Videoproduktion" style="object-fit:cover;"/>
+            <img src="videoproduktion_cover.jpg" alt="Videoproduktion" style="object-fit:cover;"/>
             <div class="pcard-hint">▶ Video abspielen</div>
           </div>
         </a>
@@ -3721,7 +3754,7 @@ document.querySelectorAll('.val-item').forEach(el=>valObs.observe(el));
           <div class="pcard-body">
             <div class="pcard-top">
               <div class="pcard-header">
-                <span class="pcard-num">02</span>
+                <span class="pcard-num">03</span>
                 <span class="pcard-name">Kaffee-Werbung</span>
               </div>
               <div class="pcard-sub">Motion Design · Social Media Ad</div>
