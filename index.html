@@ -402,7 +402,6 @@ nav{
   width:100%;height:100%;
   object-fit:cover;display:block;
   filter:brightness(0.25) saturate(0.8) contrast(1.05);
-  will-change:transform;
   transform-origin:center center;
 }
 
@@ -3232,7 +3231,7 @@ body.cat-open{overflow:hidden;}
 
 <!-- PLANET -->
 <div class="planet-wrap" id="planetWrap">
-  <video class="planet-video" id="planetVideo" muted loop playsinline preload="auto">
+  <video class="planet-video" id="planetVideo" muted loop playsinline preload="none">
     <source src="planet.mp4" type="video/mp4"/>
   </video>
 </div>
@@ -3548,6 +3547,9 @@ function renderPlanet(){
   const sy=window.scrollY;
   const inRange=sy>startY&&sy<cTop-winH*0.4;
   planetWrap.classList.toggle('visible',inRange);
+  // only promote to a GPU layer while the planet is actually shown (avoids a big
+  // 1080p texture being allocated on the first screen)
+  planetVideo.style.willChange = inRange ? 'transform' : 'auto';
   // scroll drives the rotation — planet turns only while the page moves
   const delta=sy-lastScroll;
   rotation+=delta*0.06;
@@ -3574,6 +3576,19 @@ window.addEventListener('scroll',onPlanetScroll,{passive:true});
 window.addEventListener('resize',()=>{measurePlanet();onPlanetScroll();},{passive:true});
 window.addEventListener('load',()=>{measurePlanet();renderPlanet();});
 planetVideo.addEventListener('loadeddata',()=>{measurePlanet();renderPlanet();});
+
+// Warm up the planet video in the BACKGROUND once the first screen is done loading,
+// so the heavy 5.5MB Full-HD decode never competes with the first paint / first scroll.
+// By the time the user scrolls to the second screen it is already buffered. Desktop only.
+function warmUpPlanet(){
+  if(isMobilePlanet()||planetOff) return;
+  try{ planetVideo.preload='auto'; planetVideo.load(); }catch(e){}
+}
+window.addEventListener('load',()=>{
+  if('requestIdleCallback' in window){ requestIdleCallback(warmUpPlanet,{timeout:3000}); }
+  else { setTimeout(warmUpPlanet,1800); }
+});
+
 measurePlanet();
 planetMobileGuard();
 renderPlanet();
