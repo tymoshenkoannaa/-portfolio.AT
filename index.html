@@ -43,7 +43,7 @@ footer{
   padding-right:var(--container-padding) !important;
 }
 
-html{scroll-behavior:smooth;}.nav-mobile-name{display:none;}
+.nav-mobile-name{display:none;}
 /* GLOBAL PADDING */
 nav,section.cs,.marquee-wrap,footer{
   padding-left:var(--container-padding) !important;
@@ -3602,6 +3602,21 @@ const valObs=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting) e.target.classList.add('in');
 }),{threshold:.15});
 document.querySelectorAll('.val-item').forEach(el=>valObs.observe(el));
+
+// Smooth-scroll for in-page anchor links.
+// (We removed the global CSS `scroll-behavior:smooth` because it made the mouse
+//  wheel feel sluggish — the first few notches on the hero were being damped by
+//  the scroll animation. The wheel is now instant; nav clicks stay smooth here.)
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href^="#"]');
+  if(!a) return;
+  var id=a.getAttribute('href').slice(1);
+  if(!id) return;                          // plain "#" (cards/buttons) — leave to their own handlers
+  var target=document.getElementById(id);
+  if(!target) return;
+  e.preventDefault();
+  target.scrollIntoView({behavior:'smooth',block:'start'});
+});
 </script>
 
 <!-- CATEGORY MODALS -->
