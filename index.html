@@ -3106,8 +3106,16 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 }
 .cat-card:hover .cat-card-arrow{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.6);transform:translate(3px,-3px);}
 /* Category detail page (modal) */
-.cat-modal-body{flex:1;min-height:0;overflow-y:auto;padding:56px 32px 40vh;-webkit-overflow-scrolling:touch;}
+.cat-modal-body{flex:1;min-height:0;overflow-y:auto;padding:56px 32px 120px;-webkit-overflow-scrolling:touch;}
 .cat-modal-inner{max-width:1080px;margin:0 auto;}
+/* Desktop: show the full card info at once (no hover reveal) so the folder is a
+   simple, fully-visible scrollable list — nothing is hidden below the fold. */
+@media (min-width:901px){
+  .cat-modal a.pcard{min-height:200px;}
+  .cat-modal a.pcard .pcard-desc{max-height:none !important;opacity:1 !important;margin-top:12px !important;transition:none !important;}
+  .cat-modal a.pcard .pcard-tasks{max-height:none !important;opacity:1 !important;margin-top:8px !important;transition:none !important;}
+  .cat-modal a.pcard .pcard-footer{max-height:none !important;opacity:1 !important;margin-top:14px !important;transition:none !important;}
+}
 /* category page opens/closes instantly, like a window — no fade */
 .proto-modal.cat-modal{transition:none !important;}
 body.cat-open{overflow:hidden;}
