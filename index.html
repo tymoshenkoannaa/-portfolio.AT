@@ -3131,6 +3131,9 @@ footer{padding-left:80px !important;padding-right:80px !important;}
 /* category page opens/closes instantly, like a window — no fade */
 .proto-modal.cat-modal{transition:none !important;}
 body.cat-open{overflow:hidden;}
+/* While a folder is open the page is a plain black scroll — hide the fixed planet
+   video so it can't bleed through the (static) folder content. */
+body.cat-open .planet-wrap{display:none !important;}
 @media (max-width:900px){
   .cat-cards{grid-template-columns:1fr;gap:12px;}
   .cat-card{aspect-ratio:16/10;}
