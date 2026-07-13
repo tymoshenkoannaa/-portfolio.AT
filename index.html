@@ -3115,6 +3115,18 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   .cat-modal a.pcard .pcard-desc{max-height:none !important;opacity:1 !important;margin-top:12px !important;transition:none !important;}
   .cat-modal a.pcard .pcard-tasks{max-height:none !important;opacity:1 !important;margin-top:8px !important;transition:none !important;}
   .cat-modal a.pcard .pcard-footer{max-height:none !important;opacity:1 !important;margin-top:14px !important;transition:none !important;}
+  /* Desktop folder uses the NATIVE window scroll (mouse wheel always works),
+     same reliable mechanism as mobile: hide the main page, let the folder flow
+     in the document, keep the top bar fixed. */
+  body.cat-open{overflow:visible !important;height:auto !important;position:static !important;}
+  body.cat-open #mainNav,
+  body.cat-open .float-cv,
+  body.cat-open > section,
+  body.cat-open > footer{display:none !important;}
+  .proto-modal.cat-modal{display:none;}
+  .proto-modal.cat-modal.open{display:block !important;position:static !important;height:auto !important;min-height:100vh;max-height:none !important;overflow:visible !important;opacity:1 !important;}
+  .proto-modal.cat-modal.open .proto-modal-nav{position:fixed;top:0;left:0;right:0;z-index:1001;}
+  .cat-modal-body{padding:100px 48px 140px !important;flex:none !important;min-height:0 !important;height:auto !important;overflow:visible !important;}
 }
 /* category page opens/closes instantly, like a window — no fade */
 .proto-modal.cat-modal{transition:none !important;}
