@@ -3176,15 +3176,17 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   #catModalVideo a.pcard.pcard-open .pcard-desc{max-height:200px !important;opacity:1 !important;margin-top:14px !important;}
   #catModalVideo a.pcard.pcard-open .pcard-tasks{max-height:320px !important;opacity:1 !important;margin-top:10px !important;}
   #catModalVideo a.pcard.pcard-open .pcard-footer{max-height:200px !important;opacity:1 !important;margin-top:16px !important;padding-top:16px !important;border-top:1px solid rgba(255,255,255,0.07) !important;}
-  /* turn the round ▶ into a text "Video ansehen" button */
+  /* "Video ansehen" — same small pill as the badges, white text, green on hover */
+  #catModalVideo .pcard-footer{flex-wrap:wrap !important;gap:8px 10px !important;}
   #catModalVideo .pcard-arrow{
     width:auto !important;height:auto !important;border-radius:100px !important;
-    padding:10px 20px !important;margin-right:0 !important;font-size:0 !important;cursor:pointer !important;
-    border:1px solid rgba(255,255,255,0.25) !important;background:rgba(255,255,255,0.05) !important;
+    padding:3px 10px !important;margin:0 !important;font-size:0 !important;cursor:pointer !important;
+    flex:none !important;align-self:center !important;backdrop-filter:none !important;
+    border:1px solid rgba(255,255,255,0.25) !important;background:transparent !important;
     transition:background .25s ease,border-color .25s ease !important;
   }
   #catModalVideo .pcard-arrow::after{
-    content:'Video ansehen' !important;font-size:.66rem !important;letter-spacing:.14em !important;
+    content:'Video ansehen' !important;font-size:.54rem !important;letter-spacing:.1em !important;
     text-transform:uppercase !important;color:rgba(255,255,255,0.85) !important;font-family:'Syne',sans-serif !important;white-space:nowrap !important;
   }
   #catModalVideo .pcard-arrow:hover{background:#E1FD27 !important;border-color:#E1FD27 !important;}
