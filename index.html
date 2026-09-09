@@ -3139,7 +3139,7 @@ footer{padding-left:80px !important;padding-right:80px !important;}
     transform:none !important;background:#0a0a0a !important;
     transition:border-color .4s ease,box-shadow .5s ease !important;
   }
-  #catModalVideo a.pcard:hover{border-color:#E1FD27 !important;box-shadow:0 14px 40px rgba(0,0,0,0.42),0 0 16px rgba(225,253,39,0.14) !important;}
+  #catModalVideo a.pcard:hover{transform:none !important;border-color:#E1FD27 !important;box-shadow:0 14px 40px rgba(0,0,0,0.42),0 0 16px rgba(225,253,39,0.14) !important;}
   /* cover on top — full image visible (no cropping), phone shown completely */
   #catModalVideo .pcard-img{position:relative !important;order:-1 !important;width:100% !important;aspect-ratio:16/10 !important;height:auto !important;min-width:0 !important;flex:none !important;inset:auto !important;cursor:pointer !important;background:#000 !important;}
   #catModalVideo .pcard-img img{width:100% !important;height:100% !important;object-fit:contain !important;transition:transform 1s cubic-bezier(0.16,1,0.3,1) !important;}
@@ -3157,8 +3157,10 @@ footer{padding-left:80px !important;padding-right:80px !important;}
     align-items:center !important;justify-content:center !important;border-radius:50% !important;
     background:rgba(225,253,39,0.08) !important;border:1.5px solid #E1FD27 !important;
     box-shadow:0 0 10px rgba(225,253,39,0.18) !important;transition:background .25s ease !important;
-    position:relative !important;z-index:5 !important;cursor:pointer !important;
+    position:absolute !important;top:20px !important;right:22px !important;z-index:5 !important;cursor:pointer !important;
   }
+  /* keep the title clear of the pinned chevron */
+  #catModalVideo .pcard-header{padding-right:44px !important;}
   #catModalVideo .pcard-toggle::after{
     content:'' !important;width:9px !important;height:9px !important;
     border-right:1.8px solid #E1FD27 !important;border-bottom:1.8px solid #E1FD27 !important;
