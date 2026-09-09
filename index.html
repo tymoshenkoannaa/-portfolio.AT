@@ -3216,6 +3216,8 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   /* Web folder: button opens Figma, and no video "play" icon on the cover */
   #catModalWeb .pcard-arrow::after{content:'In Figma öffnen' !important;}
   #catModalWeb .pcard-img::after,#catModalWeb .pcard-img::before{display:none !important;}
+  /* Web covers fill the whole tile edge-to-edge (no black side bars) */
+  #catModalWeb .pcard-img img{object-fit:cover !important;}
 }
 /* category page opens/closes instantly, like a window — no fade */
 .proto-modal.cat-modal{transition:none !important;}
