@@ -3128,6 +3128,69 @@ footer{padding-left:80px !important;padding-right:80px !important;}
   .proto-modal.cat-modal.open .proto-modal-nav{position:fixed;top:0;left:0;right:0;z-index:1001;}
   .cat-modal-body{padding:100px 48px 140px !important;flex:none !important;min-height:0 !important;height:auto !important;overflow:visible !important;}
 }
+/* DESKTOP — Video & Motion folder as a 2-column grid of cards. Collapsed: cover +
+   title + green chevron. Click the chevron and the card EXPANDS DOWNWARD (like mobile)
+   to reveal the description; click the cover to play the video. */
+@media (min-width:901px){
+  #catModalVideo .proj-cards{display:grid !important;grid-template-columns:repeat(2,1fr) !important;gap:22px !important;align-items:start !important;}
+  #catModalVideo a.pcard{
+    display:flex !important;flex-direction:column !important;position:relative !important;
+    min-height:0 !important;border-radius:16px !important;overflow:hidden !important;
+    transform:none !important;background:#0a0a0a !important;
+    transition:border-color .4s ease,box-shadow .5s ease !important;
+  }
+  #catModalVideo a.pcard:hover{border-color:#E1FD27 !important;box-shadow:0 14px 40px rgba(0,0,0,0.42),0 0 16px rgba(225,253,39,0.14) !important;}
+  /* cover on top, fixed height */
+  #catModalVideo .pcard-img{position:relative !important;order:-1 !important;width:100% !important;height:260px !important;min-width:0 !important;flex:none !important;inset:auto !important;cursor:pointer !important;}
+  #catModalVideo .pcard-img img{width:100% !important;height:100% !important;object-fit:cover !important;transition:transform 1s cubic-bezier(0.16,1,0.3,1) !important;}
+  #catModalVideo a.pcard:hover .pcard-img img{transform:scale(1.04) !important;}
+  #catModalVideo .pcard-num,#catModalVideo .pcard-hint{display:none !important;}
+  /* body below the cover */
+  #catModalVideo .pcard-body{position:relative !important;inset:auto !important;z-index:1 !important;background:transparent !important;display:block !important;padding:20px 22px 22px !important;}
+  #catModalVideo .pcard-top{margin:0 !important;}
+  #catModalVideo .pcard-header{display:flex !important;align-items:center !important;justify-content:space-between !important;gap:12px !important;margin:0 !important;}
+  #catModalVideo .pcard-name{font-size:1.2rem !important;padding:0 !important;}
+  #catModalVideo .pcard-sub{display:block !important;font-size:.6rem !important;margin:8px 0 0 0 !important;padding:0 !important;color:rgba(255,255,255,0.3) !important;}
+  /* green chevron */
+  #catModalVideo .pcard-toggle{
+    display:flex !important;flex:none !important;width:32px !important;height:32px !important;
+    align-items:center !important;justify-content:center !important;border-radius:50% !important;
+    background:rgba(225,253,39,0.08) !important;border:1.5px solid #E1FD27 !important;
+    box-shadow:0 0 10px rgba(225,253,39,0.18) !important;transition:background .25s ease !important;
+    position:relative !important;z-index:5 !important;cursor:pointer !important;
+  }
+  #catModalVideo .pcard-toggle::after{
+    content:'' !important;width:9px !important;height:9px !important;
+    border-right:1.8px solid #E1FD27 !important;border-bottom:1.8px solid #E1FD27 !important;
+    transform:rotate(45deg) !important;margin-top:-3px !important;transition:transform .35s ease !important;
+  }
+  #catModalVideo a.pcard.pcard-open .pcard-toggle{background:rgba(225,253,39,0.2) !important;}
+  #catModalVideo a.pcard.pcard-open .pcard-toggle::after{transform:rotate(-135deg) !important;margin-top:2px !important;}
+  /* details collapse by default, expand DOWNWARD on open */
+  #catModalVideo .pcard-desc,
+  #catModalVideo .pcard-tasks,
+  #catModalVideo .pcard-footer{
+    max-height:0 !important;overflow:hidden !important;opacity:0 !important;margin:0 !important;padding-left:0 !important;
+    transition:max-height .5s cubic-bezier(0.16,1,0.3,1),opacity .35s ease,margin .35s ease !important;
+  }
+  #catModalVideo a.pcard.pcard-open .pcard-desc{max-height:200px !important;opacity:1 !important;margin-top:14px !important;}
+  #catModalVideo a.pcard.pcard-open .pcard-tasks{max-height:320px !important;opacity:1 !important;margin-top:10px !important;}
+  #catModalVideo a.pcard.pcard-open .pcard-footer{max-height:200px !important;opacity:1 !important;margin-top:16px !important;padding-top:16px !important;border-top:1px solid rgba(255,255,255,0.07) !important;}
+  /* play button on the cover (hover) */
+  #catModalVideo .pcard-img::after{
+    content:'' !important;position:absolute !important;top:50% !important;left:50% !important;
+    width:54px !important;height:54px !important;transform:translate(-50%,-50%) scale(.9) !important;
+    border-radius:50% !important;background:rgba(0,0,0,0.5) !important;border:1.5px solid rgba(255,255,255,0.85) !important;
+    opacity:0 !important;transition:opacity .3s ease,transform .3s ease !important;pointer-events:none !important;backdrop-filter:blur(2px) !important;
+  }
+  #catModalVideo .pcard-img::before{
+    content:'' !important;position:absolute !important;top:50% !important;left:50% !important;z-index:2 !important;
+    transform:translate(-40%,-50%) scale(.9) !important;opacity:0 !important;transition:opacity .3s ease,transform .3s ease !important;pointer-events:none !important;
+    width:0;height:0;border-style:solid !important;border-width:8px 0 8px 14px !important;border-color:transparent transparent transparent #fff !important;
+  }
+  #catModalVideo a.pcard:hover .pcard-img::after{opacity:1 !important;transform:translate(-50%,-50%) scale(1) !important;}
+  #catModalVideo a.pcard:hover .pcard-img::before{opacity:1 !important;transform:translate(-40%,-50%) scale(1) !important;}
+}
 /* category page opens/closes instantly, like a window — no fade */
 .proto-modal.cat-modal{transition:none !important;}
 body.cat-open{overflow:hidden;}
@@ -3448,7 +3511,7 @@ body.cat-open .planet-wrap{display:none !important;}
       <div class="cat-card-overlay">
         <div class="cat-card-top">
           <span class="cat-card-num">03</span>
-          <span class="cat-card-count">6 Projekte</span>
+          <span class="cat-card-count">7 Projekte</span>
         </div>
         <div class="cat-card-bottom">
           <h3 class="cat-card-title">Video &amp; Motion</h3>
@@ -3811,11 +3874,43 @@ document.addEventListener('click',function(e){
     <div class="cat-modal-inner">
       <div class="proj-cards">
 
-        <a href="#" onclick="openLocalVideo(event,'kinderzahnarzt.mp4')" class="pcard">
+        <a href="#" onclick="openLocalVideo(event,'gamescom.mp4')" class="pcard">
           <div class="pcard-body">
             <div class="pcard-top">
               <div class="pcard-header">
                 <span class="pcard-num">01</span>
+                <span class="pcard-name">Gamescom 2026</span>
+              </div>
+              <div class="pcard-sub">Social Media · Videocontent</div>
+              <div class="pcard-desc">Social-Media-Video von der Gamescom 2026 — vom Dreh vor Ort bis zum fertigen Schnitt.</div>
+              <div class="pcard-tasks">
+                <div class="pcard-task">— Konzept & Vorbereitung</div>
+                <div class="pcard-task">— Dreh vor Ort auf der Messe</div>
+                <div class="pcard-task">— Videoschnitt & Bearbeitung in CapCut & Canva</div>
+              </div>
+            </div>
+            <div class="pcard-footer">
+              <div class="pcard-badges">
+                <span class="pcard-badge">Social Media</span>
+                <span class="pcard-badge">Video</span>
+                <span class="pcard-badge">Event</span>
+                <span class="pcard-badge">CapCut</span>
+                <span class="pcard-badge">Canva</span>
+              </div>
+              <span class="pcard-arrow">▶</span>
+            </div>
+          </div>
+          <div class="pcard-img">
+            <img src="gamescom_cover.jpg" alt="Gamescom 2026" style="object-fit:cover;"/>
+            <div class="pcard-hint">▶ Video abspielen</div>
+          </div>
+        </a>
+
+        <a href="#" onclick="openLocalVideo(event,'kinderzahnarzt.mp4')" class="pcard">
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <div class="pcard-header">
+                <span class="pcard-num">02</span>
                 <span class="pcard-name">Kinderzahnarzt</span>
               </div>
               <div class="pcard-sub">Social Media · Videocontent</div>
@@ -3847,7 +3942,7 @@ document.addEventListener('click',function(e){
           <div class="pcard-body">
             <div class="pcard-top">
               <div class="pcard-header">
-                <span class="pcard-num">02</span>
+                <span class="pcard-num">03</span>
                 <span class="pcard-name">Zahnarztpraxis</span>
               </div>
               <div class="pcard-sub">Social Media · Videocontent</div>
@@ -3878,7 +3973,7 @@ document.addEventListener('click',function(e){
           <div class="pcard-body">
             <div class="pcard-top">
               <div class="pcard-header">
-                <span class="pcard-num">03</span>
+                <span class="pcard-num">04</span>
                 <span class="pcard-name">Sushi-Werbung</span>
               </div>
               <div class="pcard-sub">Social Media · Videocontent</div>
@@ -3910,7 +4005,7 @@ document.addEventListener('click',function(e){
           <div class="pcard-body">
             <div class="pcard-top">
               <div class="pcard-header">
-                <span class="pcard-num">04</span>
+                <span class="pcard-num">05</span>
                 <span class="pcard-name">Videoproduktion</span>
               </div>
               <div class="pcard-sub">Corporate Video · Imagefilm</div>
@@ -3941,7 +4036,7 @@ document.addEventListener('click',function(e){
           <div class="pcard-body">
             <div class="pcard-top">
               <div class="pcard-header">
-                <span class="pcard-num">05</span>
+                <span class="pcard-num">06</span>
                 <span class="pcard-name">Kaffee-Werbung</span>
               </div>
               <div class="pcard-sub">Motion Design · Social Media Ad</div>
@@ -3972,7 +4067,7 @@ document.addEventListener('click',function(e){
           <div class="pcard-body">
             <div class="pcard-top">
               <div class="pcard-header">
-                <span class="pcard-num">06</span>
+                <span class="pcard-num">07</span>
                 <span class="pcard-name">Modemarke</span>
               </div>
               <div class="pcard-sub">Social Media · Videocontent</div>
@@ -4331,16 +4426,23 @@ function initMobileAnimations(){
   }, {threshold: 0});
   document.querySelectorAll('#skills .skill-block').forEach(b => skillObs.observe(b));
 
-  // Collapsible project cards inside category folders (mobile) — for BOTH the
-  // Figma web cards and the video cards. Cards start collapsed (title + chevron):
-  // tap the chevron/body to expand info, tap the image to actually open the
-  // Figma prototype / play the video.
+  document.querySelectorAll('.exp-item').forEach((el,i) => {
+    el.classList.add('m-fade');
+    el.style.transitionDelay = `${i*0.1}s`;
+    mObs.observe(el);
+  });
+}
+window.addEventListener('load', initMobileAnimations);
+
+// Collapsible project cards — runs at ALL widths.
+// Accordion mode (tap chevron/body → expand info, tap image → play/open) applies on
+// mobile for every folder AND on desktop for the Video & Motion tiles. On desktop the
+// Web/Print folders keep their normal behaviour (whole card opens the link).
+function initProjectCards(){
   document.querySelectorAll('.cat-modal a.pcard').forEach(card => {
     if(card.classList.contains('pcard-soon')) return;
     if(card.dataset.accInit) return;
     card.dataset.accInit = '1';
-    // capture any inline onclick (video cards) and neutralise it, so a body/chevron
-    // tap no longer fires the video — only an image tap will.
     const inlineAction = card.getAttribute('onclick');
     if(inlineAction) card.removeAttribute('onclick');
     const runAction = e => { try{ new Function('event', inlineAction).call(card, e); }catch(err){} };
@@ -4351,28 +4453,25 @@ function initMobileAnimations(){
       t.className = 'pcard-toggle';
       header.appendChild(t);
     }
-    card.addEventListener('click', e => {
-      // desktop keeps original behaviour: whole card opens the video/Figma
-      if(window.innerWidth > 900){ if(inlineAction) runAction(e); return; }
-      if(e.target.closest('.pcard-img')){        // tap image → open video / Figma
-        if(inlineAction){ e.preventDefault(); runAction(e); }
-        return;                                   // Figma cards: let the link navigate
-      }
-      e.preventDefault();                          // body/chevron tap → just toggle
+    const isAccordion = () => window.innerWidth <= 900 || !!card.closest('#catModalVideo');
+    const toggle = () => {
       const modal = card.closest('.cat-modal');
       const wasOpen = card.classList.contains('pcard-open');
       if(modal) modal.querySelectorAll('.pcard.pcard-open').forEach(c => c.classList.remove('pcard-open'));
       if(!wasOpen) card.classList.add('pcard-open');
+    };
+    card.addEventListener('click', e => {
+      if(e.target.closest('.pcard-toggle')){ e.preventDefault(); toggle(); return; } // chevron → expand/collapse
+      if(!isAccordion()){ if(inlineAction) runAction(e); return; } // desktop Web/Print: whole card opens the link
+      if(e.target.closest('.pcard-img')){                          // image → play video / open Figma
+        if(inlineAction){ e.preventDefault(); runAction(e); }
+        return;
+      }
+      e.preventDefault(); toggle();                                // body/title tap → expand/collapse
     });
   });
-
-  document.querySelectorAll('.exp-item').forEach((el,i) => {
-    el.classList.add('m-fade');
-    el.style.transitionDelay = `${i*0.1}s`;
-    mObs.observe(el);
-  });
 }
-window.addEventListener('load', initMobileAnimations);
+window.addEventListener('load', initProjectCards);
 
 // DESKTOP HERO ANIMATIONS
 function initDesktopHeroAnimations(){
