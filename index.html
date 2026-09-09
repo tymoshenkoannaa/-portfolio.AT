@@ -3192,10 +3192,13 @@ footer{padding-left:80px !important;padding-right:80px !important;}
     text-transform:uppercase !important;color:rgba(255,255,255,0.85) !important;font-family:'Syne',sans-serif !important;white-space:nowrap !important;
   }
   /* hovering the CARD must NOT move or restyle the button (base rule shifts it) */
-  #catModalVideo a.pcard:hover .pcard-arrow{transform:none !important;background:transparent !important;border-color:rgba(255,255,255,0.25) !important;}
-  /* only hovering the button itself lights it green */
-  #catModalVideo .pcard-arrow:hover{background:#E1FD27 !important;border-color:#E1FD27 !important;transform:none !important;}
-  #catModalVideo .pcard-arrow:hover::after{color:#000 !important;}
+  #catModalVideo a.pcard:hover .pcard-arrow{transform:none !important;background:transparent !important;border-color:rgba(255,255,255,0.25) !important;box-shadow:none !important;}
+  /* hovering the button ITSELF lights it green (higher specificity so it wins) */
+  #catModalVideo a.pcard .pcard-arrow:hover{
+    transform:none !important;background:rgba(225,253,39,0.1) !important;
+    border-color:#E1FD27 !important;box-shadow:0 0 14px rgba(225,253,39,0.3) !important;
+  }
+  #catModalVideo a.pcard .pcard-arrow:hover::after{color:#E1FD27 !important;}
   /* play button on the cover (hover) */
   #catModalVideo .pcard-img::after{
     content:'' !important;position:absolute !important;top:50% !important;left:50% !important;
