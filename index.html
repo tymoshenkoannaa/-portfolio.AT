@@ -3191,7 +3191,10 @@ footer{padding-left:80px !important;padding-right:80px !important;}
     content:'Video ansehen' !important;font-size:.54rem !important;letter-spacing:.1em !important;
     text-transform:uppercase !important;color:rgba(255,255,255,0.85) !important;font-family:'Syne',sans-serif !important;white-space:nowrap !important;
   }
-  #catModalVideo .pcard-arrow:hover{background:#E1FD27 !important;border-color:#E1FD27 !important;}
+  /* hovering the CARD must NOT move or restyle the button (base rule shifts it) */
+  #catModalVideo a.pcard:hover .pcard-arrow{transform:none !important;background:transparent !important;border-color:rgba(255,255,255,0.25) !important;}
+  /* only hovering the button itself lights it green */
+  #catModalVideo .pcard-arrow:hover{background:#E1FD27 !important;border-color:#E1FD27 !important;transform:none !important;}
   #catModalVideo .pcard-arrow:hover::after{color:#000 !important;}
   /* play button on the cover (hover) */
   #catModalVideo .pcard-img::after{
